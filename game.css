@@ -1,3 +1,7 @@
 body {
-    background-image: url("01C_prisonCell.png");
+background-color: black;
+}
+
+#background {
+    margin-left: 288;
 }
