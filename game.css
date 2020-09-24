@@ -1,7 +1,8 @@
-body {
-background-color: black;
-}
-
-#background {
-    margin-left: 288;
+.bg{
+  opacity: 0.5;
+  background-image: url("https://cdn.kqed.org/wp-content/uploads/sites/10/2015/02/Cell-stock.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
