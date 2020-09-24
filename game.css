@@ -13,7 +13,17 @@
    width: 50%;
     /* z-index: 2; */
     width: 1000px;
-    height: 500px;
+    height: 500px
+    position: absolute;
+}
+
+h1{
+  grid-column-start: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: center;
+  font-size: 70px;
+  color: rgb(143, 0, 0)
 }
 
 .menu-item {
