@@ -1,8 +1,47 @@
 .bg{
-  opacity: 0.5;
-  background-image: url("https://cdn.kqed.org/wp-content/uploads/sites/10/2015/02/Cell-stock.jpg");
+  opacity: 0.7;
+  background-image: url("https://cdn.hipwallpaper.com/i/43/85/RBinaX.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.card{
+  display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+    /* z-index: 2; */
+    width: 1000px;
+    height: 500px;
+}
+
+.menu-item {
+  width: 25vw;
+  height: 50px;
+  margin: 60px 0 0 0;
+  font-size: 50px;
+  text-align: left;
+  color: rgb(182, 182, 182);
+  position: relative;
+  cursor: pointer;
+}
+.menu-item:hover{
+  text-shadow: 2px 4px 0px rgba(20, 20, 200, 0.5);
+}
+.menu-item:hover:before{
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 5px;
+  height: 40px;
+  width: 50px;
+  background-color: red;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 10% 50%);
+
+  animation-name: finger;
+  animation-duration: 0.35s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
 }

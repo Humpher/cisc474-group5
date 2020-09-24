@@ -7,6 +7,10 @@ body{
   grid-template-columns: 100px 1fr 1fr 50px;
   grid-template-rows: minmax(20px, 25%) minmax(200px, 50%) minmax(10px, 25%);
   background-image: url("https://cdn.hipwallpaper.com/i/43/85/RBinaX.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 h1{
   grid-column-start: 2;
@@ -44,7 +48,7 @@ h1{
   width: 50px;
   background-color: red;
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 10% 50%);
-  
+
   animation-name: finger;
   animation-duration: 0.35s;
   animation-iteration-count: infinite;
@@ -70,7 +74,7 @@ h1{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content */
   .modal-content {
     background-color: #fefefe;
@@ -79,7 +83,7 @@ h1{
     border: 1px solid #888;
     width: 80%;
   }
-  
+
   /* The Close Button */
   .close {
     color: #aaaaaa;
@@ -87,7 +91,7 @@ h1{
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: #000;
