@@ -98,3 +98,27 @@ h1{
     text-decoration: none;
     cursor: pointer;
   }
+
+  /* Blinking Exit Sign */
+@keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+img {
+  animation: normal;
+  animation-iteration-count: infinite;
+  -webkit-animation: blink 2s;
+  -webkit-animation-iteration-count: infinite;
+  
+  margin-left: 395;
+  margin-top: 220;
+
+}
+
