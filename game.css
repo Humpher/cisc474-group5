@@ -1,20 +1,16 @@
-.bg{
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.bg:before {
+body:before {
   content:"";
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
+  z-index: -1;
+  display: grid;
   top:0;
   left:0;
   right:0;
   bottom:0;
-  opacity: 0.5;
+  opacity: 0.7;
   background-image: url("https://cdn.hipwallpaper.com/i/43/85/RBinaX.jpg");
 }
 .card{
@@ -22,26 +18,21 @@
    margin-left: auto;
    margin-right: auto;
    width: 50%;
-    /* z-index: 2; */
     width: 1000px;
     height: 500px;
 }
 
+.back-btn {
+  text-align: center;
+}
 h1{
-  grid-column-start: 2;
-  grid-row: 1;
-  justify-self: start;
-  align-self: center;
   font-size: 70px;
-  color: rgb(143, 0, 0)
+  color: rgb(143, 0, 0);
 }
 
 .menu-item {
-  width: 25vw;
-  height: 50px;
-  margin: 60px 0 0 0;
   font-size: 50px;
-  text-align: left;
+  text-align: center;
   color: rgb(182, 182, 182);
   position: relative;
   cursor: pointer;

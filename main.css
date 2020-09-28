@@ -10,7 +10,7 @@ body{
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
 }
 h1{
   grid-column-start: 2;
@@ -117,8 +117,8 @@ img {
   -webkit-animation: blink 2s;
   -webkit-animation-iteration-count: infinite;
   
-  margin-left: 395;
-  margin-top: 220;
+  margin-left: 61%;
+  margin-top: 36%;
 
 }
 
