@@ -13,7 +13,7 @@
    width: 50%;
     /* z-index: 2; */
     width: 1000px;
-    height: 500px
+    height: 500px;
     position: absolute;
 }
 
@@ -54,4 +54,12 @@ h1{
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
+}
+#phone{
+  position: fixed;
+  bottom: 380;
+  right: 650;
+  width:42;
+  height: 42;
+  
 }
