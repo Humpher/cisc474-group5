@@ -3,6 +3,9 @@ window.onload = function () {
   back.onclick = function() {
     window.location.href = "main.html";
   }
+
+
+  // These are the right and left arrows' funcitonality
   var left = document.getElementById("leftArrow");
   left.onclick = function() {
     alert("left");
