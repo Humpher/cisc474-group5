@@ -3,6 +3,14 @@ window.onload = function () {
   back.onclick = function() {
     window.location.href = "main.html";
   }
+  var left = document.getElementById("leftArrow");
+  left.onclick = function() {
+    alert("left");
+  }
+  var right = document.getElementById("rightArrow");
+  right.onclick = function() {
+    alert("right");
+  }
 
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;

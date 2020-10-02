@@ -89,6 +89,7 @@ h1{
 
 .img-zoom-container {
   position: relative;
+  width: 50px
 }
 
 .img-zoom-lens {
