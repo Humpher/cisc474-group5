@@ -15,11 +15,11 @@ body:before {
 }
 .card{
   display: block;
-   margin-left: auto;
-   margin-right: auto;
-   width: 50%;
-    width: 1000px;
-    height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  width: 1000px;
+  height: 500px;
 }
 
 .back-btn {
@@ -28,6 +28,9 @@ body:before {
 h1{
   font-size: 70px;
   color: rgb(143, 0, 0);
+}
+#back{
+  color: rgb(143, 0, 0)
 }
 
 .menu-item {
@@ -55,4 +58,39 @@ h1{
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
+}
+
+
+/* The zooming feature: */
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 300px;
+  height: 300px;
+}
+
+#myresult{
+  width: 200px;
+  height: 200px;
+  border: 5px solid #555;
+  border-color: red;
+}
+
+#myimage{
+  border: 5px solid #555;
+  border-color: black;
 }
