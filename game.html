@@ -10,6 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="game.css">
+  <script src="player.js"></script>
   <script src="game.js"></script>
 </head>
 
@@ -20,25 +21,28 @@
     <div class="back-btn">
     <h1 class="menu-item" id="back">Back to Main Menu</h1>
   </div>
-  <!-- Timer
-<div id="app"></div> -->
 
 
     <div class="card">
-      <img id="myimage" src="02C_prisonCell.png" style="width:100%">
+      <img id="myimage" src="01C_prisonCell-2.png" style="width:100%">
       <div class="container">
         <nav id="navbar" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
     </div>
     <ul class="nav navbar-nav">
+        <button class="view-btn" id="inventory"><img id="imgarrow" src="inventory.png"></button>
       <button class="view-btn" id="leftArrow"><img id="imgarrow" src="leftArrow.png"></button>
       <button class="view-btn" id="rightArrow"><img id="imgarrow" src="rightArrow.png"></button>
-      <li class="active"><a href="#">inventory</a> <img id="imgarrow" src="inventory.png"></li>
+      <!-- <li class="active"><a href="#"><img id="imgarrow" src="inventory.png"></a></li> -->
+      <!-- Timer -->
+    <li id="app"></li>
 
     </ul>
   </div>
 </nav>
+
+
       </div>
     </div>
 

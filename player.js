@@ -1,4 +1,3 @@
-window.onload = function () {
     class Inventory {
         constructor() {
             this.bar = [null, null, null, null, null, null, null, null]
@@ -78,13 +77,13 @@ window.onload = function () {
         WEST: 'west'
     }
 
-
+/*
     var testPlayer = new Player(1, Player.views.NORTH);
 
     testPlayer.takeItem("key");
+    testPlayer.changeView("right");
     console.log(testPlayer.inventory.bar);
     testPlayer.takeItem("shovel");
     console.log(testPlayer.inventory.bar);
     testPlayer.dropItem(1);
-    console.log(testPlayer.inventory.bar);
-}
+    console.log(testPlayer.inventory.bar);*/
