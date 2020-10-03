@@ -96,8 +96,9 @@ h1{
 }
 
 .img-zoom-lens {
-  position: absolute;
+  position: relative;
   border: 1px solid #d4d4d4;
+  border-color: red;
   /*set the size of the lens:*/
   width: 40px;
   height: 40px;
@@ -131,13 +132,6 @@ h1{
   margin-top: 3px;
 }
 
-/* Timer */
-/* body {
-  font-family: sans-serif;
-  display: grid;
-  height: 100vh;
-  place-items: center;
-} */
 
 .base-timer {
   position: relative;
