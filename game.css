@@ -128,8 +128,9 @@ h1{
   width: 970px;
   height: 60px;
 }
-.active{
-  margin-top: 3px;
+
+#inventory{
+  border-radius: 3px;
 }
 
 
