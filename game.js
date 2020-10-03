@@ -1,4 +1,12 @@
 window.onload = function () {
+
+  var testPlayer = new Player(1, Player.views.NORTH);
+  testPlayer.takeItem("key");
+  console.log(testPlayer.inventory.bar);
+  testPlayer.takeItem("shovel");
+  console.log(testPlayer.inventory.bar);
+  testPlayer.dropItem(1);
+  console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
   back.onclick = function() {
     window.location.href = "main.html";
