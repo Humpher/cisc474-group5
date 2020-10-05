@@ -20,8 +20,10 @@ window.onload = function () {
   }
   var right = document.getElementById("rightArrow");
   right.onclick = function() {
-    alert("right");
+     alert("right");
   }
+
+
 
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
@@ -59,8 +61,8 @@ window.onload = function () {
       if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
       if (y < 0) {y = 0;}
       /*set the position of the lens:*/
-      lens.style.left = x + "px";
-      lens.style.top = y + "px";
+      lens.style.left = x + 5;
+      lens.style.top = y + 45;
       /*display what the lens "sees":*/
       result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
     }
