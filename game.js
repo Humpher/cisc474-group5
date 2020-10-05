@@ -8,9 +8,20 @@ window.onload = function () {
   testPlayer.dropItem(1);
   console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
+
   back.onclick = function() {
     window.location.href = "main.html";
   }
+
+
+
+  // // Get the window that opens the modal
+  // var window = document.getElementsByClassName("windowArea");
+  // // When the user clicks the window, open the modal
+  // window.onclick = function () {
+  //     modal.style.display = "block";
+  // }
+
 
 
   // These are the right and left arrows' funcitonality
@@ -20,10 +31,12 @@ window.onload = function () {
   }
   var right = document.getElementById("rightArrow");
   right.onclick = function() {
-     alert("right");
+    alert("right");
   }
 
 
+
+  //This is the image zoom functionality
 
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
@@ -83,14 +96,18 @@ window.onload = function () {
   // Initiate zoom effect:
   imageZoom("myimage", "myresult");
 
-  // Timer
+
+
+
+
+  // Timer functionality
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 300;
   const ALERT_THRESHOLD = 60;
 
   const COLOR_CODES = {
-   info: {
-     color: "green"
+    info: {
+      color: "green"
     },
     warning: {
       color: "orange",
@@ -110,25 +127,25 @@ window.onload = function () {
 
   document.getElementById("app").innerHTML = `
   <div class="base-timer">
-    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <g class="base-timer__circle">
-       <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-        <path
-          id="base-timer-path-remaining"
-          stroke-dasharray="283"
-          class="base-timer__path-remaining ${remainingPathColor}"
-          d="
-            M 50, 50
-            m -45, 0
-            a 45,45 0 1,0 90,0
-            a 45,45 0 1,0 -90,0
-         "
-       ></path>
-     </g>
-   </svg>
-   <span id="base-timer-label" class="base-timer__label">${formatTime(
-     timeLeft
-   )}</span>
+  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g class="base-timer__circle">
+  <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+  <path
+  id="base-timer-path-remaining"
+  stroke-dasharray="283"
+  class="base-timer__path-remaining ${remainingPathColor}"
+  d="
+  M 50, 50
+  m -45, 0
+  a 45,45 0 1,0 90,0
+  a 45,45 0 1,0 -90,0
+  "
+  ></path>
+  </g>
+  </svg>
+  <span id="base-timer-label" class="base-timer__label">${formatTime(
+    timeLeft
+  )}</span>
   </div>
   `;
 
@@ -139,47 +156,47 @@ window.onload = function () {
   }
 
   function startTimer() {
-   timerInterval = setInterval(() => {
-     timePassed = timePassed += 1;
-     timeLeft = TIME_LIMIT - timePassed;
-     document.getElementById("base-timer-label").innerHTML = formatTime(
-       timeLeft
+    timerInterval = setInterval(() => {
+      timePassed = timePassed += 1;
+      timeLeft = TIME_LIMIT - timePassed;
+      document.getElementById("base-timer-label").innerHTML = formatTime(
+        timeLeft
       );
       setCircleDasharray();
       setRemainingPathColor(timeLeft);
 
-     if (timeLeft === 0) {
+      if (timeLeft === 0) {
         onTimesUp();
       }
-   }, 1000);
+    }, 1000);
   }
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
-   let seconds = time % 60;
+    let seconds = time % 60;
 
-   if (seconds < 10) {
+    if (seconds < 10) {
       seconds = `0${seconds}`;
     }
-     return `${minutes}:${seconds}`;
-}
+    return `${minutes}:${seconds}`;
+  }
 
   function setRemainingPathColor(timeLeft) {
     const { alert, warning, info } = COLOR_CODES;
-   if (timeLeft <= alert.threshold) {
-     document
-       .getElementById("base-timer-path-remaining")
-        .classList.remove(warning.color);
+    if (timeLeft <= alert.threshold) {
       document
-        .getElementById("base-timer-path-remaining")
-        .classList.add(alert.color);
+      .getElementById("base-timer-path-remaining")
+      .classList.remove(warning.color);
+      document
+      .getElementById("base-timer-path-remaining")
+      .classList.add(alert.color);
     } else if (timeLeft <= warning.threshold) {
       document
-        .getElementById("base-timer-path-remaining")
-        .classList.remove(info.color);
-     document
-        .getElementById("base-timer-path-remaining")
-       .classList.add(warning.color);
+      .getElementById("base-timer-path-remaining")
+      .classList.remove(info.color);
+      document
+      .getElementById("base-timer-path-remaining")
+      .classList.add(warning.color);
     }
   }
 
@@ -193,10 +210,9 @@ window.onload = function () {
       calculateTimeFraction() * FULL_DASH_ARRAY
     ).toFixed(0)} 283`;
     document
-      .getElementById("base-timer-path-remaining")
-     .setAttribute("stroke-dasharray", circleDasharray);
+    .getElementById("base-timer-path-remaining")
+    .setAttribute("stroke-dasharray", circleDasharray);
   }
-
 
 
 };
