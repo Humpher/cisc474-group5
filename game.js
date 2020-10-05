@@ -23,6 +23,38 @@ window.onload = function () {
     alert("right");
   }
 
+  // item pickup stuff
+  var itemModal = document.getElementById("item-modal");
+  function displayItemPickup(name, folder, frames) {
+    itemModal.style.display = "block";
+    var title = document.getElementById("item-title");
+    title.innerHTML = name;
+    var img = document.getElementById("item-img");
+    for(var i = 0; i <= frames; i++) {
+      delay(i);
+    }
+    function delay(i) {
+      setTimeout(() => {
+        img.src = folder + (i % frames).toString() + ".png";
+        console.log(img.src);
+      }, i * 200);
+    }
+  }
+  var inventoryButton = document.getElementById("inventory");
+  inventoryButton.onclick = function() {
+    displayItemPickup("Cigar", "images/cigarettes/", 16);
+  }
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function () {
+    itemModal.style.display = "none";
+  }
+  window.onclick = function (event) {
+    if (event.target == itemModal) {
+      itemModal.style.display = "none";
+    }
+  }
+
+
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
     img = document.getElementById(imgID);
