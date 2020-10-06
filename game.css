@@ -234,9 +234,9 @@ h1{
   /*Design for treasure chest*/
 
   #chest{
-    position: fixed;
-    bottom: 320;
-    right: 660;
+    position: absolute;
+    bottom: 405;
+    right: 670;
     width:7em; 
     height:7em
   }
