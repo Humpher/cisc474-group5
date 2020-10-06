@@ -282,6 +282,7 @@ function changeImage() {
           document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png";
         }
         else {
+        else{
           var alarmSound = new sound("prisonAlarm2.m4a");
           alarmSound.play();
 
@@ -310,6 +311,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("someimage").style.display = 'none';
   });
 });*/
+
+
 
 
 
