@@ -7,6 +7,10 @@ window.onload = function () {
   testPlayer.dropItem(1);
   console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   back.onclick = function () {
     window.location.href = "main.html";
 
@@ -19,6 +23,30 @@ window.onload = function () {
 
   
 
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+
+  // Get the window that opens the modal
+  var windowArea = document.getElementById("windowArea");
+
+  // When the user clicks the window, open the modal
+  windowArea.onclick = function () {
+    // modal.style.display = "block";
+    displayItemPickup("Julio","hello", "images/Julio/", 16);
+
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+
+
   // These are the right and left arrows' funcitonality
   var left = document.getElementById("leftArrow");
   left.onclick = function () {
@@ -28,6 +56,40 @@ window.onload = function () {
   right.onclick = function () {
     alert("right");
   }
+
+  // item pickup stuff
+  var itemModal = document.getElementById("item-modal");
+  function displayItemPickup(name, description, folder, frames) {
+    itemModal.style.display = "block";
+    var title = document.getElementById("item-title");
+    title.innerHTML = name;
+    var text = document.getElementById("item-description");
+    text.innerHTML = description;
+    var img = document.getElementById("item-img");
+    for(var i = 0; i <= frames; i++) {
+      delay(i);
+    }
+    function delay(i) {
+      setTimeout(() => {
+        img.src = folder + (i % frames).toString() + ".png";
+        console.log(img.src);
+      }, i * 200);
+    }
+  }
+  var inventoryButton = document.getElementById("inventory");
+  inventoryButton.onclick = function() {
+    displayItemPickup("Cigar","You picked up an item!", "images/cigarettes/", 16);
+  }
+  var itemSpan = document.getElementById("item-span");
+  itemSpan.onclick = function () {
+    itemModal.style.display = "none";
+  }
+  window.onclick = function (event) {
+    if (event.target == itemModal) {
+      itemModal.style.display = "none";
+    }
+  }
+
 
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
@@ -65,8 +127,8 @@ window.onload = function () {
       if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
       if (y < 0) { y = 0; }
       /*set the position of the lens:*/
-      lens.style.left = x + "px";
-      lens.style.top = y + "px";
+      lens.style.left = x + 5;
+      lens.style.top = y + 45;
       /*display what the lens "sees":*/
       result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
     }
@@ -87,7 +149,7 @@ window.onload = function () {
   // Initiate zoom effect:
   imageZoom("myimage", "myresult");
 
-  // Timer
+  // Timer functionality
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 300;
   const ALERT_THRESHOLD = 60;
@@ -114,6 +176,7 @@ window.onload = function () {
 
   document.getElementById("app").innerHTML = `
   <div class="base-timer">
+<<<<<<< HEAD
     <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <g class="base-timer__circle">
        <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
@@ -131,6 +194,25 @@ window.onload = function () {
      </g>
    </svg>
    <span id="base-timer-label" class="base-timer__label">${formatTime(
+=======
+  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g class="base-timer__circle">
+  <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+  <path
+  id="base-timer-path-remaining"
+  stroke-dasharray="283"
+  class="base-timer__path-remaining ${remainingPathColor}"
+  d="
+  M 50, 50
+  m -45, 0
+  a 45,45 0 1,0 90,0
+  a 45,45 0 1,0 -90,0
+  "
+  ></path>
+  </g>
+  </svg>
+  <span id="base-timer-label" class="base-timer__label">${formatTime(
+>>>>>>> master
     timeLeft
   )}</span>
   </div>
@@ -199,11 +281,64 @@ window.onload = function () {
     document
       .getElementById("base-timer-path-remaining")
       .setAttribute("stroke-dasharray", circleDasharray);
+<<<<<<< HEAD
+=======
   }
 
 
+};
+
+//Adding alarm sound function
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  }
+  this.stop = function () {
+    this.sound.pause();
+>>>>>>> master
+  }
+}
+//End of alarm sound function
+
+//Accessing modal object
+document.addEventListener('DOMContentLoaded', function () {
+
+  document.getElementById("chest").addEventListener('click', function () {
+    document.getElementById("theModal").style.display = "block";
+  });
+  document.getElementById("theClose").addEventListener('click', function () {
+    document.getElementById("theModal").style.display = "none";
+  })
+});
+
+//End of modal object access
+
+
+//Function to open the treasure chest
+function safeCode() {
+  var decipher = document.getElementById("thechest").value;
+
+  if (decipher == "abcd") {
+    window.alert("Chest opened");
+  }
+  else if (decipher === null || decipher === '') {
+    document.getElementById("chest").src == "tresurechest.png";
+  }
+  else {
+    var alarmSound = new sound("prisonAlarm2.m4a");
+    alarmSound.play();
+    window.alert("Wrong code!!!")
+    //document.getElementById("chest").src == "tresurechest.png";
+  }
 
 };
+<<<<<<< HEAD
 
 function sound(src) {
   this.sound = document.createElement("audio");
@@ -320,3 +455,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+=======
+//End of Safecode function
+>>>>>>> master
