@@ -24,7 +24,7 @@
 
 
     <div class="card">
-      <img id="myimage" src="01C_prisonCell-2.png" style="width:100%">
+      <img id="myimage" src="01C_prisonCell-2nobkgr.png" style="width:100%">
       <div class="container">
         <nav id="navbar" class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -50,7 +50,27 @@
       <div id="myresult" class="img-zoom-result"></div>
     </div>
 
+    <!--img id="phone" src="https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png" onclick="changeImage()"-->
 
+    <!--img id="someimage" src="https://i.imgur.com/TvArXrp.png"width="2000" height="1500"-->
+
+
+    <!--Trying the modal box for input-->
+
+    <div id="theModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+          <span id="theClose" class="close">&times;</span>
+          <label for="tchest">Enter the passcode to open the chest:</label>
+          <input type="text" id="thechest" name="tchest">
+          <input type="submit" id = "sub" onclick= "safeCode()">
+      </div>
+
+  </div>
+
+
+  <img id="chest" src="treasurechest.png" width="1100" height="1100">
 
 </body>
 </html>

@@ -1,5 +1,4 @@
 window.onload = function () {
-
   var testPlayer = new Player(1, Player.views.NORTH);
   testPlayer.takeItem("key");
   console.log(testPlayer.inventory.bar);
@@ -8,18 +7,25 @@ window.onload = function () {
   testPlayer.dropItem(1);
   console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
-  back.onclick = function() {
+  back.onclick = function () {
     window.location.href = "main.html";
+
+
+
+
+
+
   }
 
+  
 
   // These are the right and left arrows' funcitonality
   var left = document.getElementById("leftArrow");
-  left.onclick = function() {
+  left.onclick = function () {
     alert("left");
   }
   var right = document.getElementById("rightArrow");
-  right.onclick = function() {
+  right.onclick = function () {
     alert("right");
   }
 
@@ -54,10 +60,10 @@ window.onload = function () {
       x = pos.x - (lens.offsetWidth / 2);
       y = pos.y - (lens.offsetHeight / 2);
       /*prevent the lens from being positioned outside the image:*/
-      if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-      if (x < 0) {x = 0;}
-      if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-      if (y < 0) {y = 0;}
+      if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
+      if (x < 0) { x = 0; }
+      if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
+      if (y < 0) { y = 0; }
       /*set the position of the lens:*/
       lens.style.left = x + "px";
       lens.style.top = y + "px";
@@ -75,7 +81,7 @@ window.onload = function () {
       /*consider any page scrolling:*/
       x = x - window.pageXOffset;
       y = y - window.pageYOffset;
-      return {x : x, y : y};
+      return { x: x, y: y };
     }
   }
   // Initiate zoom effect:
@@ -87,8 +93,8 @@ window.onload = function () {
   const ALERT_THRESHOLD = 60;
 
   const COLOR_CODES = {
-   info: {
-     color: "green"
+    info: {
+      color: "green"
     },
     warning: {
       color: "orange",
@@ -125,8 +131,8 @@ window.onload = function () {
      </g>
    </svg>
    <span id="base-timer-label" class="base-timer__label">${formatTime(
-     timeLeft
-   )}</span>
+    timeLeft
+  )}</span>
   </div>
   `;
 
@@ -137,36 +143,36 @@ window.onload = function () {
   }
 
   function startTimer() {
-   timerInterval = setInterval(() => {
-     timePassed = timePassed += 1;
-     timeLeft = TIME_LIMIT - timePassed;
-     document.getElementById("base-timer-label").innerHTML = formatTime(
-       timeLeft
+    timerInterval = setInterval(() => {
+      timePassed = timePassed += 1;
+      timeLeft = TIME_LIMIT - timePassed;
+      document.getElementById("base-timer-label").innerHTML = formatTime(
+        timeLeft
       );
       setCircleDasharray();
       setRemainingPathColor(timeLeft);
 
-     if (timeLeft === 0) {
+      if (timeLeft === 0) {
         onTimesUp();
       }
-   }, 1000);
+    }, 1000);
   }
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
-   let seconds = time % 60;
+    let seconds = time % 60;
 
-   if (seconds < 10) {
+    if (seconds < 10) {
       seconds = `0${seconds}`;
     }
-     return `${minutes}:${seconds}`;
-}
+    return `${minutes}:${seconds}`;
+  }
 
   function setRemainingPathColor(timeLeft) {
     const { alert, warning, info } = COLOR_CODES;
-   if (timeLeft <= alert.threshold) {
-     document
-       .getElementById("base-timer-path-remaining")
+    if (timeLeft <= alert.threshold) {
+      document
+        .getElementById("base-timer-path-remaining")
         .classList.remove(warning.color);
       document
         .getElementById("base-timer-path-remaining")
@@ -175,9 +181,9 @@ window.onload = function () {
       document
         .getElementById("base-timer-path-remaining")
         .classList.remove(info.color);
-     document
+      document
         .getElementById("base-timer-path-remaining")
-       .classList.add(warning.color);
+        .classList.add(warning.color);
     }
   }
 
@@ -192,9 +198,122 @@ window.onload = function () {
     ).toFixed(0)} 283`;
     document
       .getElementById("base-timer-path-remaining")
-     .setAttribute("stroke-dasharray", circleDasharray);
+      .setAttribute("stroke-dasharray", circleDasharray);
   }
 
 
 
 };
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  }
+  this.stop = function () {
+    this.sound.pause();
+  }
+}
+
+
+    //Get modal object
+    
+
+    
+    document.addEventListener('DOMContentLoaded', function(){
+
+      
+      document.getElementById("chest").addEventListener('click', function () {
+        document.getElementById("theModal").style.display = "block";        
+      });
+
+      document.getElementById("theClose").addEventListener('click', function(){
+        document.getElementById("theModal").style.display = "none";  
+      })
+
+     
+    });
+
+    function safeCode(){
+      var decipher = document.getElementById("thechest").value;
+
+      if (decipher == "abcd") {
+        window.location.href = "hallway.html";
+      }
+      else if (decipher === null || decipher === '') {
+        document.getElementById("chest").src == "tresurechest.png";
+      }
+      else {
+        var alarmSound = new sound("prisonAlarm2.m4a");
+        alarmSound.play();
+        window.alert("Wrong code!!!")
+        //document.getElementById("chest").src == "tresurechest.png";
+      }
+
+    }
+
+
+    
+
+/*
+function changeImage() {
+  //document.getElementById("phone").addEventListener('click', function () {
+  //console.log("Hello");
+
+  if (document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png") {
+    document.getElementById("phone").src = "https://thumbs.dreamstime.com/b/number-buttons-7770747.jpg";
+
+    if (document.getElementById("phone").src == "https://thumbs.dreamstime.com/b/number-buttons-7770747.jpg") {
+      document.getElementById("phone").style.width = 100;
+      document.getElementById("phone").style.height = 100;
+
+      document.getElementById("phone").addEventListener('click', function () {
+
+        var combinationCode = prompt("Please the combination code to escape the cell: ");
+        if (combinationCode == 1234) {
+          window.location.href = "hallway.html";
+        }
+        else if (combinationCode === null || combinationCode === '') {
+          document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png";
+        }
+        else {
+          var alarmSound = new sound("prisonAlarm2.m4a");
+          alarmSound.play();
+
+        }
+
+
+      });
+
+    }
+
+  }
+  else {
+    document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png"
+    //document.getElementById("phone").style.position = fixed;
+    document.getElementById("phone").style.bottom = 380;
+    document.getElementById("phone").style.right = 650;
+  }
+}*/
+
+
+
+
+/*
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById("someimage").addEventListener('click', function () {
+    document.getElementById("someimage").style.display = 'none';
+  });
+});*/
+
+
+
+
+
+
+
