@@ -1,3 +1,10 @@
+let viewMap = new Map([
+  ["north","01C_prisonCell-2.png"],
+  ["east","01E_prisonCell(up).png"],
+  ["south","01C_prisonCell-2.png"],
+  ["west","01E_prisonCell(up).png"]
+]);
+
 window.onload = function () {
 
   var testPlayer = new Player(1, Player.views.NORTH);
@@ -40,11 +47,13 @@ window.onload = function () {
   // These are the right and left arrows' funcitonality
   var left = document.getElementById("leftArrow");
   left.onclick = function () {
-    alert("left");
+    testPlayer.changeView('left');
+    document.getElementById("myimage").src=viewMap.get(testPlayer.view);
   }
   var right = document.getElementById("rightArrow");
   right.onclick = function () {
-    alert("right");
+    testPlayer.changeView('right');
+    document.getElementById("myimage").src=viewMap.get(testPlayer.view);
   }
 
   // item pickup stuff
