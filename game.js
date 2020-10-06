@@ -9,16 +9,16 @@ window.onload = function () {
   console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
 
-  back.onclick = function() {
+  back.onclick = function () {
     window.location.href = "main.html";
   }
 
 
-      // Get the modal
-      var modal = document.getElementById("myModal");
+  // Get the modal
+  var modal = document.getElementById("myModal");
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 
 
   // Get the window that opens the modal
@@ -26,24 +26,24 @@ window.onload = function () {
 
   // When the user clicks the window, open the modal
   window.onclick = function () {
-      modal.style.display = "block";
+    modal.style.display = "block";
 
   }
 
   // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
-      modal.style.display = "none";
+    modal.style.display = "none";
   }
 
 
 
   // These are the right and left arrows' funcitonality
   var left = document.getElementById("leftArrow");
-  left.onclick = function() {
+  left.onclick = function () {
     alert("left");
   }
   var right = document.getElementById("rightArrow");
-  right.onclick = function() {
+  right.onclick = function () {
     alert("right");
   }
 
@@ -82,10 +82,10 @@ window.onload = function () {
       x = pos.x - (lens.offsetWidth / 2);
       y = pos.y - (lens.offsetHeight / 2);
       /*prevent the lens from being positioned outside the image:*/
-      if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-      if (x < 0) {x = 0;}
-      if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-      if (y < 0) {y = 0;}
+      if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
+      if (x < 0) { x = 0; }
+      if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
+      if (y < 0) { y = 0; }
       /*set the position of the lens:*/
       lens.style.left = x + 5;
       lens.style.top = y + 45;
@@ -103,7 +103,7 @@ window.onload = function () {
       /*consider any page scrolling:*/
       x = x - window.pageXOffset;
       y = y - window.pageYOffset;
-      return {x : x, y : y};
+      return { x: x, y: y };
     }
   }
   // Initiate zoom effect:
@@ -198,18 +198,18 @@ window.onload = function () {
     const { alert, warning, info } = COLOR_CODES;
     if (timeLeft <= alert.threshold) {
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(warning.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(warning.color);
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(alert.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.add(alert.color);
     } else if (timeLeft <= warning.threshold) {
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(info.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(info.color);
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(warning.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.add(warning.color);
     }
   }
 
@@ -223,9 +223,63 @@ window.onload = function () {
       calculateTimeFraction() * FULL_DASH_ARRAY
     ).toFixed(0)} 283`;
     document
-    .getElementById("base-timer-path-remaining")
-    .setAttribute("stroke-dasharray", circleDasharray);
+      .getElementById("base-timer-path-remaining")
+      .setAttribute("stroke-dasharray", circleDasharray);
   }
 
 
 };
+
+//Adding alarm sound function
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  }
+  this.stop = function () {
+    this.sound.pause();
+  }
+}
+//End of alarm sound function
+
+//Accessing modal object
+document.addEventListener('DOMContentLoaded', function () {
+
+  document.getElementById("chest").addEventListener('click', function () {
+    document.getElementById("theModal").style.display = "block";
+  });
+  document.getElementById("theClose").addEventListener('click', function () {
+    document.getElementById("theModal").style.display = "none";
+  })
+});
+
+//End of modal object access
+
+
+//Function to open the treasure chest
+function safeCode() {
+  var decipher = document.getElementById("thechest").value;
+
+  if (decipher == "abcd") {
+    window.location.href = "hallway.html";
+  }
+  else if (decipher === null || decipher === '') {
+    document.getElementById("chest").src == "tresurechest.png";
+  }
+  else {
+    var alarmSound = new sound("prisonAlarm2.m4a");
+    alarmSound.play();
+    window.alert("Wrong code!!!")
+    //document.getElementById("chest").src == "tresurechest.png";
+  }
+
+};
+//End of Safecode function
+
+
+

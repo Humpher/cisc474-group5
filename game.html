@@ -70,5 +70,24 @@
     <div id="myresult" class="img-zoom-result"></div>
   </div>
 
+  <!--Adding the modal box for passcode input-->
+
+  <div id="theModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="theClose" class="close">&times;</span>
+        <label for="tchest">Enter the passcode to open the chest:</label>
+        <input type="text" id="thechest" name="tchest">
+        <input type="submit" id = "sub" onclick= "safeCode()">
+    </div>
+
+</div>
+<!--Treasure chest image-->
+<img id="chest" src="treasurechest.png" width="1100" height="1100">
+
+<!-- End of modal box-->
+
+
 </body>
 </html>
