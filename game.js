@@ -22,10 +22,10 @@ window.onload = function () {
 
 
   // Get the window that opens the modal
-  var windowArea = document.getElementById("windowArea");
+  var window = document.getElementById("windowArea");
 
   // When the user clicks the window, open the modal
-  windowArea.onclick = function () {
+  window.onclick = function () {
     modal.style.display = "block";
 
   }
@@ -47,37 +47,9 @@ window.onload = function () {
     alert("right");
   }
 
-  // item pickup stuff
-  var itemModal = document.getElementById("item-modal");
-  function displayItemPickup(name, folder, frames) {
-    itemModal.style.display = "block";
-    var title = document.getElementById("item-title");
-    title.innerHTML = name;
-    var img = document.getElementById("item-img");
-    for(var i = 0; i <= frames; i++) {
-      delay(i);
-    }
-    function delay(i) {
-      setTimeout(() => {
-        img.src = folder + (i % frames).toString() + ".png";
-        console.log(img.src);
-      }, i * 200);
-    }
-  }
-  var inventoryButton = document.getElementById("inventory");
-  inventoryButton.onclick = function() {
-    displayItemPickup("Cigar", "images/cigarettes/", 16);
-  }
-  var itemSpan = document.getElementById("item-span");
-  itemSpan.onclick = function () {
-    itemModal.style.display = "none";
-  }
-  window.onclick = function (event) {
-    if (event.target == itemModal) {
-      itemModal.style.display = "none";
-    }
-  }
 
+
+  //This is the image zoom functionality
 
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
@@ -136,6 +108,10 @@ window.onload = function () {
   }
   // Initiate zoom effect:
   imageZoom("myimage", "myresult");
+
+
+
+
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
@@ -305,5 +281,16 @@ function safeCode() {
 };
 //End of Safecode function
 
+//Toggle for the Inventory
+ function invTog(){
+    var hidInv = document.getElementById("hidden-inv");
+      if(hidInv.style.display === "grid"){
+        hidInv.style.display = "none";
+      }
+      else{
+        hidInv.style.display = "grid";
+      }
+
+  }
 
 
