@@ -266,7 +266,7 @@ function safeCode() {
   var decipher = document.getElementById("thechest").value;
 
   if (decipher == "abcd") {
-    window.location.href = "hallway.html";
+    window.alert("Chest opened");
   }
   else if (decipher === null || decipher === '') {
     document.getElementById("chest").src == "tresurechest.png";
