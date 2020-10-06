@@ -5,10 +5,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="game.css">
   <script src="player.js"></script>
   <script src="game.js"></script>
@@ -17,46 +17,71 @@
 
 
 <body>
-    <!-- The return to main menue button -->
-    <div class="back-btn">
+  <!-- The return to main menu button -->
+  <div class="back-btn">
     <h1 class="menu-item" id="back">Back to Main Menu</h1>
   </div>
 
 
-    <div class="card">
-      <img id="myimage" src="01C_prisonCell-2.png" style="width:100%">
-      <div class="container">
-        <nav id="navbar" class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    </div>
-    <ul class="nav navbar-nav">
-        <button class="view-btn" id="inventory"><img id="imgarrow" src="inventory.png"></button>
-      <button class="view-btn" id="leftArrow"><img id="imgarrow" src="leftArrow.png"></button>
-      <button class="view-btn" id="rightArrow"><img id="imgarrow" src="rightArrow.png"></button>
-      <!-- <li class="active"><a href="#"><img id="imgarrow" src="inventory.png"></a></li> -->
-      <!-- Timer -->
-    <li id="app"></li>
+  <map name="cellmap">
+    <area id="windowArea" shape="rect" coords="550,130,490,240">
+  </map>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
 
-    </ul>
-  </div>
-</nav>
-
-
+      <!-- Modal content -->
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <p> Yo im your cellmate</p>
       </div>
+
+  </div>
+
+
+
+
+
+  <div class="card">
+    <img id="myimage" src="01C_prisonCell-2.png"  usemap="#cellmap" style="width:100%">
+    <div class="container">
+      <nav id="navbar" class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          </div>
+          <ul class="nav navbar-nav">
+            <button class="view-btn" id="inventory"><img id="imgarrow" src="inventory.png"></button>
+            <button class="view-btn" id="inventory"><img id="imgarrow" src="mg.png"></button>
+            <button class="view-btn" id="leftArrow"><img id="imgarrow" src="leftArrow.png"></button>
+            <button class="view-btn" id="rightArrow"><img id="imgarrow" src="rightArrow.png"></button>
+            <!-- <li class="active"><a href="#"><img id="imgarrow" src="inventory.png"></a></li> -->
+
+            <!-- Timer -->
+            <li id="app"></li>
+
+          </ul>
+        </div>
+      </nav>
+
+
     </div>
+  </div>
 
     <!-- Item Description Modal -->
     <div id="item-modal" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span id = "item-span" class="close">&times;</span>
         <h1 id = "item-title">Cigarettes</h1>
         <p>You found an item!</p>
         <img id="item-img" src="images/cigarettes/0.png" height="50%">
     </div>
 
+</div>
+<!--Treasure chest image-->
+<img id="chest" src="treasurechest.png" width="1100" height="1100">
+
+<!-- End of modal box-->
   </div>
 
   <div class="img-zoom-container">
