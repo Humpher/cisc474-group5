@@ -26,7 +26,8 @@ window.onload = function () {
 
   // When the user clicks the window, open the modal
   windowArea.onclick = function () {
-    modal.style.display = "block";
+    // modal.style.display = "block";
+    displayItemPickup("Julio","hello", "images/Julio/", 16);
 
   }
 
@@ -49,10 +50,12 @@ window.onload = function () {
 
   // item pickup stuff
   var itemModal = document.getElementById("item-modal");
-  function displayItemPickup(name, folder, frames) {
+  function displayItemPickup(name, description, folder, frames) {
     itemModal.style.display = "block";
     var title = document.getElementById("item-title");
     title.innerHTML = name;
+    var text = document.getElementById("item-description");
+    text.innerHTML = description;
     var img = document.getElementById("item-img");
     for(var i = 0; i <= frames; i++) {
       delay(i);
@@ -66,7 +69,7 @@ window.onload = function () {
   }
   var inventoryButton = document.getElementById("inventory");
   inventoryButton.onclick = function() {
-    displayItemPickup("Cigar", "images/cigarettes/", 16);
+    displayItemPickup("Cigar","You picked up an item!", "images/cigarettes/", 16);
   }
   var itemSpan = document.getElementById("item-span");
   itemSpan.onclick = function () {
@@ -304,6 +307,3 @@ function safeCode() {
 
 };
 //End of Safecode function
-
-
-
