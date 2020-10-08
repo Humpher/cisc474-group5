@@ -248,6 +248,7 @@ window.onload = function () {
 
   function onTimesUp() {
     clearInterval(timerInterval);
+    window.location.href = "game.html";
   }
 
   function startTimer() {
