@@ -337,6 +337,14 @@ h1{
 
   }
 
+  #piggyBank{
+    position: absolute;
+    bottom: 300;
+    right:410;
+    width:6em;
+    height:6em
+  }
+
 
 
 

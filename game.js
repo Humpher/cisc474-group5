@@ -48,6 +48,15 @@ clockObj.addEventListener('click', function () {
   });
     eastScreen.appendChild(lockObj);
 
+    // piggyBankObj object
+    var piggyBankObj = document.createElement('img');
+    piggyBankObj.setAttribute('id', 'piggyBank');
+    piggyBankObj.setAttribute('src', 'images/piggyBank/0.png');
+    piggyBankObj.addEventListener('click', function () {
+      displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
+    });
+      eastScreen.appendChild(piggyBankObj);
+
 
     // PadLock object
     var padlockObj = document.createElement('img');
