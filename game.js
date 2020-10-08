@@ -1,19 +1,71 @@
 let viewMap = new Map([
-  ["north","01C_prisonCell-2.png"],
-  ["east","01E_prisonCell(up).png"],
-  ["south","01C_prisonCell-2.png"],
-  ["west","01E_prisonCell(up).png"]
+  ["north", "01C_prisonCell-2.png"],
+  ["east", "01E_prisonCell(up).png"],
+  ["south", "01C_prisonCell-2.png"],
+  ["west", "01E_prisonCell(up).png"]
 ]);
 
 window.onload = function () {
 
+  var parentElement = document.getElementById('game_objects');
+
+  var northScreen = document.createElement('div');
+  var eastScreen = document.createElement('div');
+  var chestObj = document.createElement('img');
+  chestObj.setAttribute('id', 'chest');
+  chestObj.setAttribute('src', 'treasurechest.png');
+  chestObj.setAttribute('width', 1100);
+  chestObj.setAttribute('height', 1100);
+  chestObj.addEventListener('click', function () {
+    document.getElementById("theModal").style.display = "block";
+  });
+
+  var cellMap = document.createElement('map');
+  // Get the window that opens the modal
+  var windowArea = document.createElement("windowArea");
+  windowArea.setAttribute('shape', 'rect');
+  windowArea.setAttribute('coords', "550,130,490,240");
+  // When the user clicks the window, open the modal
+  windowArea.addEventListener('click', function() {
+    // modal.style.display = "block";
+    displayItemPickup("Julio", "hello", "images/Julio/", 16);
+
+  });
+  cellMap.appendChild(windowArea);
+  northScreen.appendChild(chestObj);
+  northScreen.appendChild(cellMap);
+
+  function loadNorth() {
+    while (parentElement.firstChild) {
+      parentElement.removeChild(parentElement.firstChild);
+    }
+    parentElement.appendChild(northScreen);
+  };
+
+  function loadEast() {
+    while (parentElement.firstChild) {
+      parentElement.removeChild(parentElement.firstChild);
+    }
+    parentElement.appendChild(eastScreen);
+  };
+
+  function loadScreen(view) {
+    if (view == 'north' || view == 'south') {
+      loadNorth()
+    }
+    if (view == 'east' || view == 'west') {
+      loadEast()
+    }
+  }
+
   var testPlayer = new Player(1, Player.views.NORTH);
-  testPlayer.takeItem("key");
-  console.log(testPlayer.inventory.bar);
-  testPlayer.takeItem("shovel");
-  console.log(testPlayer.inventory.bar);
-  testPlayer.dropItem(1);
-  console.log(testPlayer.inventory.bar);
+  loadScreen(testPlayer.view);
+  //testPlayer.takeItem("key");
+  //console.log(testPlayer.inventory.bar);
+  //testPlayer.takeItem("shovel");
+  //console.log(testPlayer.inventory.bar);
+  //testPlayer.dropItem(1);
+  //console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
 
   back.onclick = function () {
@@ -28,15 +80,7 @@ window.onload = function () {
   var span = document.getElementsByClassName("close")[0];
 
 
-  // Get the window that opens the modal
-  var windowArea = document.getElementById("windowArea");
 
-  // When the user clicks the window, open the modal
-  windowArea.onclick = function () {
-    // modal.style.display = "block";
-    displayItemPickup("Julio","hello", "images/Julio/", 16);
-
-  }
 
   // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
@@ -49,12 +93,14 @@ window.onload = function () {
   var left = document.getElementById("leftArrow");
   left.onclick = function () {
     testPlayer.changeView('left');
-    document.getElementById("myimage").src=viewMap.get(testPlayer.view);
+    document.getElementById("myimage").src = viewMap.get(testPlayer.view);
+    loadScreen(testPlayer.view);
   }
   var right = document.getElementById("rightArrow");
   right.onclick = function () {
     testPlayer.changeView('right');
-    document.getElementById("myimage").src=viewMap.get(testPlayer.view);
+    document.getElementById("myimage").src = viewMap.get(testPlayer.view);
+    loadScreen(testPlayer.view);
   }
 
   // item pickup stuff
@@ -66,7 +112,7 @@ window.onload = function () {
     var text = document.getElementById("item-description");
     text.innerHTML = description;
     var img = document.getElementById("item-img");
-    for(var i = 0; i <= frames; i++) {
+    for (var i = 0; i <= frames; i++) {
       delay(i);
     }
     function delay(i) {
@@ -77,8 +123,8 @@ window.onload = function () {
     }
   }
   var inventoryButton = document.getElementById("inventory");
-  inventoryButton.onclick = function() {
-    displayItemPickup("Cigar","You picked up an item!", "images/cigarettes/", 16);
+  inventoryButton.onclick = function () {
+    displayItemPickup("Cigar", "You picked up an item!", "images/cigarettes/", 16);
   }
   var itemSpan = document.getElementById("item-span");
   itemSpan.onclick = function () {
@@ -262,8 +308,6 @@ window.onload = function () {
       .getElementById("base-timer-path-remaining")
       .setAttribute("stroke-dasharray", circleDasharray);
   }
-
-
 };
 
 //Adding alarm sound function
@@ -286,9 +330,7 @@ function sound(src) {
 //Accessing modal object
 document.addEventListener('DOMContentLoaded', function () {
 
-  document.getElementById("chest").addEventListener('click', function () {
-    document.getElementById("theModal").style.display = "block";
-  });
+
   document.getElementById("theClose").addEventListener('click', function () {
     document.getElementById("theModal").style.display = "none";
   })
@@ -316,3 +358,4 @@ function safeCode() {
 
 };
 //End of Safecode function
+
