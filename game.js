@@ -20,23 +20,28 @@ window.onload = function () {
     document.getElementById("theModal").style.display = "block";
   });
 
-// Money roll Object
+  var idTag;
+  // Money roll Object
   var rollObj = document.createElement('img');
   rollObj.setAttribute('id', 'roll');
   rollObj.setAttribute('src', 'images/roll/3.png');
   rollObj.addEventListener('click', function () {
+    idTag = "roll";
+    addItem(idTag);
     displayItemPickup("Roll", "hello", "images/roll/", 16);
+    
+    });
+  eastScreen.appendChild(rollObj);
+
+
+  // Clock Object
+  var clockObj = document.createElement('img');
+  clockObj.setAttribute('id', 'clock');
+  clockObj.setAttribute('src', 'images/clock/3.png');
+  clockObj.addEventListener('click', function () {
+    displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
+    idTag = "clock";
   });
-    eastScreen.appendChild(rollObj);
-
-
-// Clock Object
-var clockObj = document.createElement('img');
-clockObj.setAttribute('id', 'clock');
-clockObj.setAttribute('src', 'images/clock/3.png');
-clockObj.addEventListener('click', function () {
-  displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
-});
   northScreen.appendChild(clockObj);
 
 
@@ -48,7 +53,7 @@ clockObj.addEventListener('click', function () {
   windowArea.setAttribute('shape', 'rect');
   windowArea.setAttribute('coords', "550,130,490,240");
   // When the user clicks the window, open the modal
-  windowArea.addEventListener('click', function() {
+  windowArea.addEventListener('click', function () {
     console.log("hello")
     // modal.style.display = "block";
     displayItemPickup("Julio", "hello", "images/Julio/", 16);
@@ -146,10 +151,62 @@ clockObj.addEventListener('click', function () {
       }, i * 200);
     }
   }
+
+  //Inventory Functions
+  var inventorySlot = -1;
   var inventoryButton = document.getElementById("inventory");
   inventoryButton.onclick = function () {
-    displayItemPickup("Cigar", "You picked up an item!", "images/cigarettes/", 16);
+    var hidInv = document.getElementById("hidden-inv");
+    if (hidInv.style.display === "grid") {
+      hidInv.style.display = "none";
+    }
+    else {
+      hidInv.style.display = "grid";
+    }
   }
+
+  function findItem(idTag) {
+    var i;
+    for (i = 0; i < testPlayer.inventory.bar.length; i++) {
+        if (testPlayer.inventory.bar[i] === idTag) {
+            inventorySlot = i;
+        }
+
+
+    }
+}
+
+function addItem(idTag) {
+  testPlayer.takeItem(idTag);
+  findItem(idTag);
+  alert(inventorySlot);
+  console.log(testPlayer.inventory);
+  document.getElementById(inventorySlot).innerHTML = `<div class = 'fill'><img id = 'inv-${idTag}' src =  'images/${idTag}/3.png' height = '40' width = '40' onclick = 'useItem(this.id)'></div>`;
+  idTag = " ";
+  inventorySlot = -1;
+
+}
+
+function removeItem() {
+
+  findItem(idTag);
+  testPlayer.removeItem(x);
+  if (x != -1) {
+      document.getElementById(inventorySlot).innerHTML = "";
+      idTag = " ";
+      inventorySlot = -1;
+  }
+
+}
+
+function useItem(idThis) { 
+  idTag = idThis
+  alert(this);
+  
+}
+//end of inventory functions
+
+
   var itemSpan = document.getElementById("item-span");
   itemSpan.onclick = function () {
     itemModal.style.display = "none";
@@ -380,6 +437,6 @@ function safeCode() {
     window.alert("Wrong code!!!")
     //document.getElementById("chest").src == "tresurechest.png";
   }
-
+  /*displayItemPickup("Cigar", "You picked up an item!", "images/cigarettes/", 16);*/
 };
 //End of Safecode function
