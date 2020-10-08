@@ -1,12 +1,95 @@
+let viewMap = new Map([
+  ["north", "01C_prisonCell-2.png"],
+  ["east", "01E_prisonCell(up).png"],
+  ["south", "01C_prisonCell-2.png"],
+  ["west", "01E_prisonCell(up).png"]
+]);
+
 window.onload = function () {
 
+  var parentElement = document.getElementById('game_objects');
+
+  var northScreen = document.createElement('div');
+  var eastScreen = document.createElement('div');
+  var chestObj = document.createElement('img');
+  chestObj.setAttribute('id', 'chest');
+  chestObj.setAttribute('src', 'treasurechest.png');
+  chestObj.setAttribute('width', 1100);
+  chestObj.setAttribute('height', 1100);
+  chestObj.addEventListener('click', function () {
+    document.getElementById("theModal").style.display = "block";
+  });
+
+// Money roll Object
+  var rollObj = document.createElement('img');
+  rollObj.setAttribute('id', 'roll');
+  rollObj.setAttribute('src', 'images/roll/3.png');
+  rollObj.addEventListener('click', function () {
+    displayItemPickup("Roll", "hello", "images/roll/", 16);
+  });
+    eastScreen.appendChild(rollObj);
+
+
+// Clock Object
+var clockObj = document.createElement('img');
+clockObj.setAttribute('id', 'clock');
+clockObj.setAttribute('src', 'images/clock/3.png');
+clockObj.addEventListener('click', function () {
+  displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
+});
+  northScreen.appendChild(clockObj);
+
+
+  var cellMap = document.createElement('map');
+  cellMap.setAttribute('name', 'cellmap');
+  // Get the window that opens the modal
+  var windowArea = document.createElement("area");
+  windowArea.setAttribute('id', 'windowArea');
+  windowArea.setAttribute('shape', 'rect');
+  windowArea.setAttribute('coords', "550,130,490,240");
+  // When the user clicks the window, open the modal
+  windowArea.addEventListener('click', function() {
+    console.log("hello")
+    // modal.style.display = "block";
+    displayItemPickup("Julio", "hello", "images/Julio/", 16);
+
+  });
+  cellMap.appendChild(windowArea);
+  northScreen.appendChild(chestObj);
+  northScreen.appendChild(cellMap);
+
+
+  function loadNorth() {
+    while (parentElement.firstChild) {
+      parentElement.removeChild(parentElement.firstChild);
+    }
+    parentElement.appendChild(northScreen);
+  };
+
+  function loadEast() {
+    while (parentElement.firstChild) {
+      parentElement.removeChild(parentElement.firstChild);
+    }
+    parentElement.appendChild(eastScreen);
+  };
+
+  function loadScreen(view) {
+    if (view == 'north' || view == 'south') {
+      loadNorth()
+    }
+    if (view == 'east' || view == 'west') {
+      loadEast()
+    }
+  }
+
   var testPlayer = new Player(1, Player.views.NORTH);
-  testPlayer.takeItem("key");
-  console.log(testPlayer.inventory.bar);
-  testPlayer.takeItem("shovel");
-  console.log(testPlayer.inventory.bar);
-  testPlayer.dropItem(1);
-  console.log(testPlayer.inventory.bar);
+  loadScreen(testPlayer.view);
+  //testPlayer.takeItem("key");
+  //console.log(testPlayer.inventory.bar);
+  //testPlayer.takeItem("shovel");
+  //console.log(testPlayer.inventory.bar);
+  //testPlayer.dropItem(1);
+  //console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
 
   back.onclick = function () {
@@ -21,14 +104,7 @@ window.onload = function () {
   var span = document.getElementsByClassName("close")[0];
 
 
-  // Get the window that opens the modal
-  var window = document.getElementById("windowArea");
 
-  // When the user clicks the window, open the modal
-  window.onclick = function () {
-    modal.style.display = "block";
-
-  }
 
   // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
@@ -40,16 +116,50 @@ window.onload = function () {
   // These are the right and left arrows' funcitonality
   var left = document.getElementById("leftArrow");
   left.onclick = function () {
-    alert("left");
+    testPlayer.changeView('left');
+    document.getElementById("myimage").src = viewMap.get(testPlayer.view);
+    loadScreen(testPlayer.view);
   }
   var right = document.getElementById("rightArrow");
   right.onclick = function () {
-    alert("right");
+    testPlayer.changeView('right');
+    document.getElementById("myimage").src = viewMap.get(testPlayer.view);
+    loadScreen(testPlayer.view);
   }
 
+  // item pickup stuff
+  var itemModal = document.getElementById("item-modal");
+  function displayItemPickup(name, description, folder, frames) {
+    itemModal.style.display = "block";
+    var title = document.getElementById("item-title");
+    title.innerHTML = name;
+    var text = document.getElementById("item-description");
+    text.innerHTML = description;
+    var img = document.getElementById("item-img");
+    for (var i = 0; i <= frames; i++) {
+      delay(i);
+    }
+    function delay(i) {
+      setTimeout(() => {
+        img.src = folder + (i % frames).toString() + ".png";
+        console.log(img.src);
+      }, i * 200);
+    }
+  }
+  var inventoryButton = document.getElementById("inventory");
+  inventoryButton.onclick = function () {
+    displayItemPickup("Cigar", "You picked up an item!", "images/cigarettes/", 16);
+  }
+  var itemSpan = document.getElementById("item-span");
+  itemSpan.onclick = function () {
+    itemModal.style.display = "none";
+  }
+  window.onclick = function (event) {
+    if (event.target == itemModal) {
+      itemModal.style.display = "none";
+    }
+  }
 
-
-  //This is the image zoom functionality
 
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
@@ -75,7 +185,7 @@ window.onload = function () {
     function moveLens(e) {
       var pos, x, y;
       /*prevent any other actions that may occur when moving over the image:*/
-      e.preventDefault();
+      //e.preventDefault();
       /*get the cursor's x and y positions:*/
       pos = getCursorPos(e);
       /*calculate the position of the lens:*/
@@ -106,12 +216,8 @@ window.onload = function () {
       return { x: x, y: y };
     }
   }
-  // Initiate zoom effect:
-  imageZoom("myimage", "myresult");
-
-
-
-
+  // // Initiate zoom effect:
+  // imageZoom("myimage", "myresult");
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
@@ -166,6 +272,7 @@ window.onload = function () {
 
   function onTimesUp() {
     clearInterval(timerInterval);
+    window.location.href = "game.html";
   }
 
   function startTimer() {
@@ -226,8 +333,6 @@ window.onload = function () {
       .getElementById("base-timer-path-remaining")
       .setAttribute("stroke-dasharray", circleDasharray);
   }
-
-
 };
 
 //Adding alarm sound function
@@ -250,9 +355,7 @@ function sound(src) {
 //Accessing modal object
 document.addEventListener('DOMContentLoaded', function () {
 
-  document.getElementById("chest").addEventListener('click', function () {
-    document.getElementById("theModal").style.display = "block";
-  });
+
   document.getElementById("theClose").addEventListener('click', function () {
     document.getElementById("theModal").style.display = "none";
   })
@@ -280,17 +383,3 @@ function safeCode() {
 
 };
 //End of Safecode function
-
-//Toggle for the Inventory
- function invTog(){
-    var hidInv = document.getElementById("hidden-inv");
-      if(hidInv.style.display === "grid"){
-        hidInv.style.display = "none";
-      }
-      else{
-        hidInv.style.display = "grid";
-      }
-
-  }
-
-
