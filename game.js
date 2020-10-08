@@ -20,23 +20,23 @@ window.onload = function () {
     document.getElementById("theModal").style.display = "block";
   });
 
-// Money roll Object
+  // Money roll Object
   var rollObj = document.createElement('img');
   rollObj.setAttribute('id', 'roll');
   rollObj.setAttribute('src', 'images/roll/3.png');
   rollObj.addEventListener('click', function () {
     displayItemPickup("Roll", "hello", "images/roll/", 16);
   });
-    northScreen.appendChild(rollObj);
+  northScreen.appendChild(rollObj);
 
 
-// Clock Object
-var clockObj = document.createElement('img');
-clockObj.setAttribute('id', 'clock');
-clockObj.setAttribute('src', 'images/clock/14.png');
-clockObj.addEventListener('click', function () {
-  displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
-});
+  // Clock Object
+  var clockObj = document.createElement('img');
+  clockObj.setAttribute('id', 'clock');
+  clockObj.setAttribute('src', 'images/clock/14.png');
+  clockObj.addEventListener('click', function () {
+    displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
+  });
   northScreen.appendChild(clockObj);
 
   // PinLock object
@@ -46,35 +46,35 @@ clockObj.addEventListener('click', function () {
   lockObj.addEventListener('click', function () {
     displayItemPickup("Pin Lock", "Good Luck...", "images/pinLock/", 16);
   });
-    eastScreen.appendChild(lockObj);
+  eastScreen.appendChild(lockObj);
 
-    // piggyBankObj object
-    var piggyBankObj = document.createElement('img');
-    piggyBankObj.setAttribute('id', 'piggyBank');
-    piggyBankObj.setAttribute('src', 'images/piggyBank/0.png');
-    piggyBankObj.addEventListener('click', function () {
-      displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
-    });
-      eastScreen.appendChild(piggyBankObj);
+  // piggyBankObj object
+  var piggyBankObj = document.createElement('img');
+  piggyBankObj.setAttribute('id', 'piggyBank');
+  piggyBankObj.setAttribute('src', 'images/piggyBank/0.png');
+  piggyBankObj.addEventListener('click', function () {
+    displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
+  });
+  eastScreen.appendChild(piggyBankObj);
 
 
-    // PadLock object
-    var padlockObj = document.createElement('img');
-    padlockObj.setAttribute('id', 'padLock');
-    padlockObj.setAttribute('src', 'images/padLock/0.png');
-    padlockObj.addEventListener('click', function () {
-      displayItemPickup("Pad Lock", "You need a key to unlock this pad lock", "images/padLock/", 16);
-    });
-      eastScreen.appendChild(padlockObj);
+  // PadLock object
+  var padlockObj = document.createElement('img');
+  padlockObj.setAttribute('id', 'padLock');
+  padlockObj.setAttribute('src', 'images/padLock/0.png');
+  padlockObj.addEventListener('click', function () {
+    displayItemPickup("Pad Lock", "You need a key to unlock this pad lock", "images/padLock/", 16);
+  });
+  eastScreen.appendChild(padlockObj);
 
-      // Book object
-      var bookObj = document.createElement('img');
-      bookObj.setAttribute('id', 'book');
-      bookObj.setAttribute('src', 'images/book/0.png');
-      bookObj.addEventListener('click', function () {
-        displayItemPickup("Old Book", "You found an item!", "images/book/", 16);
-      });
-        eastScreen.appendChild(bookObj);
+  // Book object
+  var bookObj = document.createElement('img');
+  bookObj.setAttribute('id', 'book');
+  bookObj.setAttribute('src', 'images/book/0.png');
+  bookObj.addEventListener('click', function () {
+    displayItemPickup("Old Book", "You found an item!", "images/book/", 16);
+  });
+  eastScreen.appendChild(bookObj);
 
 
   var cellMap = document.createElement('map');
@@ -342,18 +342,18 @@ clockObj.addEventListener('click', function () {
     const { alert, warning, info } = COLOR_CODES;
     if (timeLeft <= alert.threshold) {
       document
-        .getElementById("base-timer-path-remaining")
-        .classList.remove(warning.color);
+      .getElementById("base-timer-path-remaining")
+      .classList.remove(warning.color);
       document
-        .getElementById("base-timer-path-remaining")
-        .classList.add(alert.color);
+      .getElementById("base-timer-path-remaining")
+      .classList.add(alert.color);
     } else if (timeLeft <= warning.threshold) {
       document
-        .getElementById("base-timer-path-remaining")
-        .classList.remove(info.color);
+      .getElementById("base-timer-path-remaining")
+      .classList.remove(info.color);
       document
-        .getElementById("base-timer-path-remaining")
-        .classList.add(warning.color);
+      .getElementById("base-timer-path-remaining")
+      .classList.add(warning.color);
     }
   }
 
@@ -367,8 +367,8 @@ clockObj.addEventListener('click', function () {
       calculateTimeFraction() * FULL_DASH_ARRAY
     ).toFixed(0)} 283`;
     document
-      .getElementById("base-timer-path-remaining")
-      .setAttribute("stroke-dasharray", circleDasharray);
+    .getElementById("base-timer-path-remaining")
+    .setAttribute("stroke-dasharray", circleDasharray);
   }
 };
 
