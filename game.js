@@ -39,6 +39,25 @@ clockObj.addEventListener('click', function () {
 });
   northScreen.appendChild(clockObj);
 
+  // PinLock object
+  var lockObj = document.createElement('img');
+  lockObj.setAttribute('id', 'lock');
+  lockObj.setAttribute('src', 'images/pinLock/2.png');
+  lockObj.addEventListener('click', function () {
+    displayItemPickup("Pin Lock", "Good Luck...", "images/pinLock/", 16);
+  });
+    eastScreen.appendChild(lockObj);
+
+
+    // PadLock object
+    var padlockObj = document.createElement('img');
+    padlockObj.setAttribute('id', 'padLock');
+    padlockObj.setAttribute('src', 'images/padLock/0.png');
+    padlockObj.addEventListener('click', function () {
+      displayItemPickup("Pad Lock", "You need a key to unlock this pad lock", "images/padLock/", 16);
+    });
+      eastScreen.appendChild(padlockObj);
+
 
   var cellMap = document.createElement('map');
   cellMap.setAttribute('name', 'cellmap');

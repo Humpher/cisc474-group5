@@ -310,6 +310,26 @@ h1{
 
   }
 
+  #lock{
+    position: absolute;
+    bottom: 390;
+    right: 755;
+    width:4em;
+    height:4em
+
+  }
+
+  #padLock{
+    position: absolute;
+    bottom: 430;
+    right:800;
+    width:2em;
+    height:2em
+
+  }
+
+
+
 
   /*Modal for treasure chest*/
   .modal {
