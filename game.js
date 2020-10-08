@@ -43,8 +43,13 @@ window.onload = function () {
   var lockObj = document.createElement('img');
   lockObj.setAttribute('id', 'lock');
   lockObj.setAttribute('src', 'images/pinLock/2.png');
+  document.getElementById('item-span-2').addEventListener('click', function(){
+    document.getElementById('item-modal-2').style.display = "none";
+
+  });
+
   lockObj.addEventListener('click', function () {
-    displayItemPickup("Pin Lock", "Good Luck...", "images/pinLock/", 16);
+      document.getElementById('item-modal-2').style.display = "block";
   });
   eastScreen.appendChild(lockObj);
 
@@ -195,7 +200,11 @@ window.onload = function () {
     if (event.target == itemModal) {
       itemModal.style.display = "none";
     }
-  }
+    else if (event.target == document.getElementById('item-modal-2')) {
+      document.getElementById('item-modal-2').style.display = "none";
+
+    }
+  };
 
 
   function imageZoom(imgID, resultID) {
@@ -419,4 +428,20 @@ function safeCode() {
   }
 
 };
+
 //End of Safecode function
+
+// Function to open the pin lockObj
+function pinLockCode(){
+  var code = document.getElementById('thePinLock').value;
+
+  if(code == "1010") {
+    window.alert("You got the right pin!")
+  }
+  else{
+    var alarmSound = new sound("prisonAlarm2.m4a");
+    alarmSound.play();
+    window.alert("Wrong pin try again...")
+  }
+
+};
