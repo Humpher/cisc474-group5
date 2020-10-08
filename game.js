@@ -58,6 +58,15 @@ clockObj.addEventListener('click', function () {
     });
       eastScreen.appendChild(padlockObj);
 
+      // Book object
+      var bookObj = document.createElement('img');
+      bookObj.setAttribute('id', 'book');
+      bookObj.setAttribute('src', 'images/book/0.png');
+      bookObj.addEventListener('click', function () {
+        displayItemPickup("Old Book", "You found an item!", "images/book/", 16);
+      });
+        eastScreen.appendChild(bookObj);
+
 
   var cellMap = document.createElement('map');
   cellMap.setAttribute('name', 'cellmap');
