@@ -262,8 +262,8 @@ window.onload = function () {
       return { x: x, y: y };
     }
   }
-  // // Initiate zoom effect:
-  // imageZoom("myimage", "myresult");
+  // Initiate zoom effect:
+  imageZoom("myimage", "myresult");
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function safeCode() {
   var decipher = document.getElementById("thechest").value;
 
-  if (decipher == "abcd") {
+  if (decipher == "xyunb") {
     window.alert("Chest opened");
   }
   else if (decipher === null || decipher === '') {
