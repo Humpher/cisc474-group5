@@ -1,7 +1,6 @@
 <html>
 
 
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
@@ -15,32 +14,31 @@
 </head>
 
 
-
 <body>
   <!-- The return to main menu button -->
   <div class="back-btn">
     <h1 class="menu-item" id="back">Back to Main Menu</h1>
   </div>
 
-  <div id="game_objects">
-  </div>
+  <map name="cellmap">
+    <area id="windowArea" shape="rect" coords="550,130,490,240">
+  </map>
   <!-- The Modal -->
   <div id="myModal" class="modal">
 
-      <!-- Modal content -->
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <p> Yo im your cellmate</p>
-      </div>
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p> Yo im your cellmate</p>
+    </div>
 
   </div>
-
 
 
 
 
   <div class="card">
-    <img id="myimage" src="01C_prisonCell-2.png"  usemap="#cellmap" style="width:100%">
+    <img id="myimage" src="01C_prisonCell-2.png" usemap="#cellmap" style="width:100%">
     <div class="container">
       <nav id="navbar" class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -48,7 +46,7 @@
           </div>
           <ul class="nav navbar-nav">
             <button class="view-btn" id="inventory"><img id="imgarrow" src="inventory.png"></button>
-            <!-- <button class="view-btn" id="inventory"><img id="imgarrow" src="mg.png"></button> -->
+            <button class="view-btn" id="inventory"><img id="imgarrow" src="mg.png"></button>
             <button class="view-btn" id="leftArrow"><img id="imgarrow" src="leftArrow.png"></button>
             <button class="view-btn" id="rightArrow"><img id="imgarrow" src="rightArrow.png"></button>
             <!-- <li class="active"><a href="#"><img id="imgarrow" src="inventory.png"></a></li> -->
@@ -60,50 +58,72 @@
         </div>
       </nav>
 
-
     </div>
   </div>
 
-    <!-- Item Description Modal -->
-    <div id="item-modal" class="modal">
+  <!-- Item Description Modal -->
+  <div id="item-modal" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
-        <span id = "item-span" class="close">&times;</span>
-        <h1 id = "item-title">Cigarettes</h1>
-        <p id="item-description"> You found an item!</p>
-        <img id="item-img" src="images/cigarettes/0.png" height="50%">
+      <span id="item-span" class="close">&times;</span>
+      <h1 id="item-title">Cigarettes</h1>
+      <p id="item-description"> You found an item!</p>
+      <img id="item-img" src="images/cigarettes/0.png" height="50%">
     </div>
-
-</div>
-
-
-
-
-
-    <!--the modal box for the treasure chest-->
-
-    <div id="theModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-          <span id="theClose" class="close">&times;</span>
-          <label for="tchest">Enter the passcode to open the chest:</label>
-          <input type="text" id="thechest" name="tchest">
-          <input type="submit" id = "sub" onclick= "safeCode()">
-      </div>
 
   </div>
 
-  
+
+
+
+  <!--the modal box for the treasure chest-->
+
+  <div id="theModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id="theClose" class="close">&times;</span>
+      <label for="tchest">Enter the passcode to open the chest:</label>
+      <input type="text" id="thechest" name="tchest">
+      <input type="submit" id="sub" onclick="safeCode()">
+    </div>
+
+  </div>
+
+  <!--Treasure chest image-->
+  <img id="chest" src="woodenchest.png" width="1100" height="1100">
 
 
   <div class="img-zoom-container">
     <div id="myresult" class="img-zoom-result"></div>
   </div>
 
+  <!--Cigarettes image-->
+  <img id="cig" src="images/cigarettes/0.png" width="1100" height="1100">
 
-  <img id="chest" src="treasurechest.png" width="1100" height="1100">
+
+
+
+
+  <!--the modal box for the treasure chest-->
+
+  <div id="openchest-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id="theCloser" class="close">&times;</span>
+      <h1 id="item-title">Treasure Chest</h1>
+      <p id="item-description"> You opened the chest!</p>
+      <img id="item-img"  src="openwoodchest.png" height="20%">
+      <img id="hammer-img"  src= "images/hammer/0.png" height= 20% >
+      
+    </div>
+
+  </div>
+
+ 
 
 </body>
+
 </html>

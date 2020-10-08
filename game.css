@@ -284,12 +284,20 @@ h1{
 
 #chest{
   position: absolute;
-  bottom: 415;
+  bottom: 380;
   right: 670;
   width:7em;
   height:7em
 }
 /*End of treasure chest design*/
+
+#cig{
+  position: absolute;
+  bottom: 280;
+  right: 440;
+  width:4em;
+  height:4em
+}
 
 
 #roll{
