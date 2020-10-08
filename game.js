@@ -122,6 +122,7 @@ window.onload = function () {
     if (view == 'east' || view == 'west') {
       loadEast()
     }
+    document.getElementById("myresult").style.backgroundImage = "url('" + viewMap.get(testPlayer.view) + "')";
   }
 
   var testPlayer = new Player(1, Player.views.NORTH);
@@ -263,7 +264,7 @@ window.onload = function () {
     }
   }
   // // Initiate zoom effect:
-  // imageZoom("myimage", "myresult");
+   imageZoom("myimage", "myresult");
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
