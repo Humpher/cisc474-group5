@@ -93,7 +93,7 @@ window.onload = function () {
   windowArea.addEventListener('click', function() {
     console.log("hello")
     // modal.style.display = "block";
-    displayItemPickup("Julio", "hello", "images/Julio/", 16);
+    displayItemPickup("Julio", "Hey..I knew Mike, the guy who used to live in this cell. He got out a few weeks ago and left this box. I can help you open it if you're willing to trade.", "images/Julio/", 16);
 
   });
   cellMap.appendChild(windowArea);
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function safeCode() {
   var decipher = document.getElementById("thechest").value;
 
-  if (decipher == "abcd") {
+  if (decipher == "xyunb") {
     window.alert("Chest opened");
   }
   else if (decipher === null || decipher === '') {
