@@ -93,14 +93,14 @@ h1{
   width: 50px
 }
 
-/* .img-zoom-lens {
+.img-zoom-lens {
   position: relative;
   border: 1px solid #d4d4d4;
   border-color: red;
-  set the size of the lens:
+  /*set the size of the lens:*/
   width: 40px;
   height: 40px;
-} */
+}
 
 .img-zoom-result {
   border: 1px solid #d4d4d4;
@@ -127,24 +127,9 @@ h1{
   height: 60px;
 }
 
-/* Inventory */
 #inventory{
   border-radius: 3px;
 }
-
-#hidden-inv{
-  display: none;
-  grid-template-columns: repeat(8, 15%);
-  background-color: rgb(252, 252, 252);
-  height:70%;
-  width: 40%
-}
-
-.bar{
-  background-color: lightgrey;
-  border: 1px solid rgb(0, 0, 0, 0.8);
-}
-
 
 
 /* Timer */
@@ -201,6 +186,55 @@ h1{
   font-size: 12px;
 }
 
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-content > * {
+  text-align: center;
+  margin: auto;
+}
+
+.modal-content > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 #app{
   position:relative; left:800px; top:2px;
   color: white;
@@ -252,11 +286,29 @@ h1{
     position: absolute;
     bottom: 405;
     right: 670;
-    width:7em; 
+    width:7em;
     height:7em
   }
   /*End of treasure chest design*/
-  
+
+
+  #roll{
+    position: absolute;
+    bottom: 405;
+    right: 300;
+    width:7em;
+    height:7em
+  }
+
+  #clock{
+    position: absolute;
+    bottom: 405;
+    right: 300;
+    width:7em;
+    height:7em
+
+  }
+
 
   /*Modal for treasure chest*/
   .modal {
@@ -272,7 +324,7 @@ h1{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content */
   .modal-content {
     background-color: #fefefe;
@@ -281,7 +333,7 @@ h1{
     border: 1px solid #888;
     width: 80%;
   }
-  
+
   /* The Close Button */
   .close {
     color: #aaaaaa;
@@ -289,11 +341,11 @@ h1{
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
   }
-/*End of modal box for passcode input*/  
+/*End of modal box for passcode input*/
