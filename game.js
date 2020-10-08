@@ -20,6 +20,26 @@ window.onload = function () {
     document.getElementById("theModal").style.display = "block";
   });
 
+// Money roll Object
+  var rollObj = document.createElement('img');
+  rollObj.setAttribute('id', 'roll');
+  rollObj.setAttribute('src', 'images/roll/3.png');
+  rollObj.addEventListener('click', function () {
+    displayItemPickup("Roll", "hello", "images/roll/", 16);
+  });
+    eastScreen.appendChild(rollObj);
+
+
+// Clock Object
+var clockObj = document.createElement('img');
+clockObj.setAttribute('id', 'clock');
+clockObj.setAttribute('src', 'images/clock/3.png');
+clockObj.addEventListener('click', function () {
+  displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
+});
+  northScreen.appendChild(clockObj);
+
+
   var cellMap = document.createElement('map');
   // Get the window that opens the modal
   var windowArea = document.createElement("windowArea");
@@ -34,6 +54,7 @@ window.onload = function () {
   cellMap.appendChild(windowArea);
   northScreen.appendChild(chestObj);
   northScreen.appendChild(cellMap);
+
 
   function loadNorth() {
     while (parentElement.firstChild) {
@@ -192,8 +213,8 @@ window.onload = function () {
       return { x: x, y: y };
     }
   }
-  // Initiate zoom effect:
-  imageZoom("myimage", "myresult");
+  // // Initiate zoom effect:
+  // imageZoom("myimage", "myresult");
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
@@ -359,4 +380,3 @@ function safeCode() {
 
 };
 //End of Safecode function
-
