@@ -224,7 +224,7 @@ window.onload = function () {
     result.style.backgroundImage = "url('" + img.src + "')";
     result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
     /*execute a function when someone moves the cursor over the image, or the lens:*/
-    lens.addEventListener("mousemove", moveLens);
+    // lens.addEventListener("mousemove", moveLens);
     img.addEventListener("mousemove", moveLens);
     /*and also for touch screens:*/
     lens.addEventListener("touchmove", moveLens);
