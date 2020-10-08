@@ -294,18 +294,19 @@ h1{
 
   #roll{
     position: absolute;
-    bottom: 405;
-    right: 300;
-    width:7em;
-    height:7em
+    bottom: 390;
+    right: 930;
+    width:2em;
+    height:2em
   }
 
   #clock{
     position: absolute;
     bottom: 405;
-    right: 300;
-    width:7em;
-    height:7em
+    right: 780;
+    top: 170;
+    width:5em;
+    height:5em
 
   }
 

@@ -27,13 +27,13 @@ window.onload = function () {
   rollObj.addEventListener('click', function () {
     displayItemPickup("Roll", "hello", "images/roll/", 16);
   });
-    eastScreen.appendChild(rollObj);
+    northScreen.appendChild(rollObj);
 
 
 // Clock Object
 var clockObj = document.createElement('img');
 clockObj.setAttribute('id', 'clock');
-clockObj.setAttribute('src', 'images/clock/3.png');
+clockObj.setAttribute('src', 'images/clock/14.png');
 clockObj.addEventListener('click', function () {
   displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
 });
