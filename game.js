@@ -7,10 +7,6 @@ window.onload = function () {
   testPlayer.dropItem(1);
   console.log(testPlayer.inventory.bar);
   var back = document.getElementById("back");
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   back.onclick = function () {
     window.location.href = "main.html";
 
@@ -176,25 +172,6 @@ window.onload = function () {
 
   document.getElementById("app").innerHTML = `
   <div class="base-timer">
-<<<<<<< HEAD
-    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <g class="base-timer__circle">
-       <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-        <path
-          id="base-timer-path-remaining"
-          stroke-dasharray="283"
-          class="base-timer__path-remaining ${remainingPathColor}"
-          d="
-            M 50, 50
-            m -45, 0
-            a 45,45 0 1,0 90,0
-            a 45,45 0 1,0 -90,0
-         "
-       ></path>
-     </g>
-   </svg>
-   <span id="base-timer-label" class="base-timer__label">${formatTime(
-=======
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <g class="base-timer__circle">
   <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
@@ -212,7 +189,6 @@ window.onload = function () {
   </g>
   </svg>
   <span id="base-timer-label" class="base-timer__label">${formatTime(
->>>>>>> master
     timeLeft
   )}</span>
   </div>
@@ -281,8 +257,6 @@ window.onload = function () {
     document
       .getElementById("base-timer-path-remaining")
       .setAttribute("stroke-dasharray", circleDasharray);
-<<<<<<< HEAD
-=======
   }
 
 
@@ -301,7 +275,6 @@ function sound(src) {
   }
   this.stop = function () {
     this.sound.pause();
->>>>>>> master
   }
 }
 //End of alarm sound function
@@ -338,123 +311,4 @@ function safeCode() {
   }
 
 };
-<<<<<<< HEAD
-
-function sound(src) {
-  this.sound = document.createElement("audio");
-  this.sound.src = src;
-  this.sound.setAttribute("preload", "auto");
-  this.sound.setAttribute("controls", "none");
-  this.sound.style.display = "none";
-  document.body.appendChild(this.sound);
-  this.play = function () {
-    this.sound.play();
-  }
-  this.stop = function () {
-    this.sound.pause();
-  }
-}
-
-
-    //Get modal object
-    
-
-    
-    document.addEventListener('DOMContentLoaded', function(){
-
-      
-      document.getElementById("chest").addEventListener('click', function () {
-        document.getElementById("theModal").style.display = "block";        
-      });
-
-      document.getElementById("theClose").addEventListener('click', function(){
-        document.getElementById("theModal").style.display = "none";  
-      })
-
-     
-    });
-
-    function safeCode(){
-      var decipher = document.getElementById("thechest").value;
-
-      if (decipher == "abcd") {
-        window.location.href = "hallway.html";
-      }
-      else if (decipher === null || decipher === '') {
-        document.getElementById("chest").src == "tresurechest.png";
-      }
-      else {
-        var alarmSound = new sound("prisonAlarm2.m4a");
-        alarmSound.play();
-        window.alert("Wrong code!!!")
-        //document.getElementById("chest").src == "tresurechest.png";
-      }
-
-    }
-
-
-    
-
-/*
-function changeImage() {
-  //document.getElementById("phone").addEventListener('click', function () {
-  //console.log("Hello");
-
-  if (document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png") {
-    document.getElementById("phone").src = "https://thumbs.dreamstime.com/b/number-buttons-7770747.jpg";
-
-    if (document.getElementById("phone").src == "https://thumbs.dreamstime.com/b/number-buttons-7770747.jpg") {
-      document.getElementById("phone").style.width = 100;
-      document.getElementById("phone").style.height = 100;
-
-      document.getElementById("phone").addEventListener('click', function () {
-
-        var combinationCode = prompt("Please the combination code to escape the cell: ");
-        if (combinationCode == 1234) {
-          window.location.href = "hallway.html";
-        }
-        else if (combinationCode === null || combinationCode === '') {
-          document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png";
-        }
-        else {
-        else{
-          var alarmSound = new sound("prisonAlarm2.m4a");
-          alarmSound.play();
-
-        }
-
-
-      });
-
-    }
-
-  }
-  else {
-    document.getElementById("phone").src == "https://www.seekpng.com/png/detail/109-1097611_drawing-of-a-flip-phone-cell-phone-clipart.png"
-    //document.getElementById("phone").style.position = fixed;
-    document.getElementById("phone").style.bottom = 380;
-    document.getElementById("phone").style.right = 650;
-  }
-}*/
-
-
-
-
-/*
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById("someimage").addEventListener('click', function () {
-    document.getElementById("someimage").style.display = 'none';
-  });
-});*/
-
-
-
-
-
-
-
-
-
-=======
 //End of Safecode function
->>>>>>> master
