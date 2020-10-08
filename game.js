@@ -21,12 +21,15 @@ window.onload = function () {
   });
 
   var cellMap = document.createElement('map');
+  cellMap.setAttribute('name', 'cellmap');
   // Get the window that opens the modal
-  var windowArea = document.createElement("windowArea");
+  var windowArea = document.createElement("area");
+  windowArea.setAttribute('id', 'windowArea');
   windowArea.setAttribute('shape', 'rect');
   windowArea.setAttribute('coords', "550,130,490,240");
   // When the user clicks the window, open the modal
   windowArea.addEventListener('click', function() {
+    console.log("hello")
     // modal.style.display = "block";
     displayItemPickup("Julio", "hello", "images/Julio/", 16);
 
@@ -161,7 +164,7 @@ window.onload = function () {
     function moveLens(e) {
       var pos, x, y;
       /*prevent any other actions that may occur when moving over the image:*/
-      e.preventDefault();
+      //e.preventDefault();
       /*get the cursor's x and y positions:*/
       pos = getCursorPos(e);
       /*calculate the position of the lens:*/
