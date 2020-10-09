@@ -314,7 +314,7 @@ h1{
 
 #chest{
   position: absolute;
-  bottom: 390;
+  bottom: 345;
   right: 670;
   width:7em;
   height:7em
@@ -324,7 +324,7 @@ h1{
 
 #roll{
   position: absolute;
-  bottom: 375;
+  bottom: 325;
   right: 930;
   width:2em;
   height:2em
@@ -352,7 +352,7 @@ h1{
 #padLock{
   position: absolute;
   bottom: 420;
-  right:800;
+  right:810;
   width:2em;
   height:2em
 
@@ -369,7 +369,7 @@ h1{
 
 #piggyBank{
   position: absolute;
-  bottom: 225;
+  bottom: 180;
   right:310;
   width:6em;
   height:6em
