@@ -49,7 +49,7 @@ var julio_unlocked_2 = false;
   rollObj.addEventListener('click', function () {
     idTag = "roll";
     addItem(idTag);
-    displayItemPickup("Roll", "hello", "images/roll/", 16);
+    displayItemPickup("Roll", "You found an item!", "images/roll/", 16);
     northScreen.removeChild(rollObj);
   });
   northScreen.appendChild(rollObj);
@@ -73,7 +73,7 @@ var julio_unlocked_2 = false;
   clockObj.setAttribute('id', 'clock');
   clockObj.setAttribute('src', 'images/clock/14.png');
   clockObj.addEventListener('click', function () {
-    displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
+    displayItemPickup("Retro Clock", "I better hurry up", "images/clock/", 16);
     if(temp != " ") {
       displayItemPickup("Vintage Clock", "Nothing interesting happens.", "images/clock/", 16);
     }
@@ -105,10 +105,10 @@ var julio_unlocked_2 = false;
       idTag = "key";
       addItem(idTag);
       eastScreen.removeChild(piggyBankObj);
-    } else if(temp != " ") { 
-      displayItemPickup("Piggy Bank", "Nothing interesting happens.", "images/piggyBank/", 16); 
+    } else if(temp != " ") {
+      displayItemPickup("Piggy Bank", "Nothing interesting happens.", "images/piggyBank/", 16);
     } else {
-      displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
+      displayItemPickup("Piggy Bank", "What a cute piggy", "images/piggyBank/", 16);
     }
 
   });

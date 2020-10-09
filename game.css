@@ -314,7 +314,7 @@ h1{
 
 #chest{
   position: absolute;
-  bottom: 415;
+  bottom: 390;
   right: 670;
   width:7em;
   height:7em
@@ -324,7 +324,7 @@ h1{
 
 #roll{
   position: absolute;
-  bottom: 420;
+  bottom: 375;
   right: 930;
   width:2em;
   height:2em
@@ -332,9 +332,9 @@ h1{
 
 #clock{
   position: absolute;
-  bottom: 405;
+  /* bottom: 720 px; */
   right: 780;
-  top: 170;
+  top: 190;
   width:5em;
   height:5em
 
@@ -342,7 +342,7 @@ h1{
 
 #lock{
   position: absolute;
-  bottom: 400;
+  bottom: 350;
   right: 755;
   width:4em;
   height:4em
@@ -351,7 +351,7 @@ h1{
 
 #padLock{
   position: absolute;
-  bottom: 450;
+  bottom: 420;
   right:800;
   width:2em;
   height:2em
@@ -360,8 +360,8 @@ h1{
 
 #book{
   position: absolute;
-  bottom: 250;
-  right:480;
+  bottom: 200;
+  right:440;
   width:6em;
   height:6em
 
@@ -369,16 +369,16 @@ h1{
 
 #piggyBank{
   position: absolute;
-  bottom: 300;
-  right:410;
+  bottom: 225;
+  right:310;
   width:6em;
   height:6em
 }
 
 #cigarettes{
   position: absolute;
-  bottom: 250;
-  right:480;
+  bottom: 210;
+  right:450;
   width:4em;
   height:4em
 
