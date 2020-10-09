@@ -13,7 +13,7 @@ window.onload = function () {
   var eastScreen = document.createElement('div');
   var chestObj = document.createElement('img');
   chestObj.setAttribute('id', 'chest');
-  chestObj.setAttribute('src', 'treasurechest.png');
+  chestObj.setAttribute('src', 'images/Chest.G02.2k.png');
   chestObj.setAttribute('width', 1100);
   chestObj.setAttribute('height', 1100);
   chestObj.addEventListener('click', function () {
@@ -416,10 +416,15 @@ function safeCode() {
   var decipher = document.getElementById("thechest").value;
 
   if (decipher == "xyunb") {
-    window.alert("Chest opened");
+    // window.alert("Chest opened");
+    document.getElementById("theModal").style.display = "none"; 
+    document.getElementById("openchest-modal").style.display = "block"; 
+    document.getElementById("theCloser").addEventListener('click', function () { 
+      document.getElementById("openchest-modal").style.display = "none"; });
   }
   else if (decipher === null || decipher === '') {
     document.getElementById("chest").src == "tresurechest.png";
+    document.getElementById("theModal").style.display = "none"; 
   }
   else {
     var alarmSound = new sound("prisonAlarm2.m4a");

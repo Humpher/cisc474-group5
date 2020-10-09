@@ -11,7 +11,7 @@ window.onload = function () {
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal 
+    // When the user clicks the button, open the modal
     tutorial.onclick = function () {
         modal.style.display = "block";
     }
@@ -31,4 +31,26 @@ window.onload = function () {
             modal.style.display = "none";
         }
     }
+
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function () {
+          this.sound.play();
+        }
+        this.stop = function () {
+          this.sound.pause();
+        }
+      }
+
+      var mainSound = new sound("Mainsong.m4a");
+
+      document.body.addEventListener("mousemove", function () {
+        mainSound.play()
+    });
+
 };
