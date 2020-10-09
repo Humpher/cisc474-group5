@@ -127,8 +127,38 @@ h1{
   height: 60px;
 }
 
+/* Inventory */
 #inventory{
   border-radius: 3px;
+}
+
+#hidden-inv{
+  display: none;
+  grid-template-columns: repeat(8, 50px);
+  background-color: rgb(252, 252, 252);
+  height:70%;
+  width: 40%;
+}
+
+
+.bar{
+  background-color: white;
+  border: 1px solid rgb(0, 0, 0, 0.8);
+}
+
+
+.selected{
+  background-color: yellow;
+  border-style: dashed;
+}
+
+.fill{
+  position: relative;
+  height:40px;
+  width:40px;
+  cursor: pointer;
+  left: 1.5px;
+
 }
 
 

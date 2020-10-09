@@ -25,6 +25,8 @@ window.onload = function () {
   rollObj.setAttribute('id', 'roll');
   rollObj.setAttribute('src', 'images/roll/3.png');
   rollObj.addEventListener('click', function () {
+    idTag = "roll";
+    addItem(idTag);
     displayItemPickup("Roll", "hello", "images/roll/", 16);
   });
   northScreen.appendChild(rollObj);
@@ -43,13 +45,13 @@ window.onload = function () {
   var lockObj = document.createElement('img');
   lockObj.setAttribute('id', 'lock');
   lockObj.setAttribute('src', 'images/pinLock/2.png');
-  document.getElementById('item-span-2').addEventListener('click', function(){
+  document.getElementById('item-span-2').addEventListener('click', function () {
     document.getElementById('item-modal-2').style.display = "none";
 
   });
 
   lockObj.addEventListener('click', function () {
-      document.getElementById('item-modal-2').style.display = "block";
+    document.getElementById('item-modal-2').style.display = "block";
   });
   eastScreen.appendChild(lockObj);
 
@@ -78,6 +80,8 @@ window.onload = function () {
   bookObj.setAttribute('src', 'images/book/0.png');
   bookObj.addEventListener('click', function () {
     displayItemPickup("Old Book", "You found an item!", "images/book/", 16);
+    idTag = "book";
+    addItem(idTag);
   });
   eastScreen.appendChild(bookObj);
 
@@ -90,11 +94,14 @@ window.onload = function () {
   windowArea.setAttribute('shape', 'rect');
   windowArea.setAttribute('coords', "550,130,490,240");
   // When the user clicks the window, open the modal
-  windowArea.addEventListener('click', function() {
+  windowArea.addEventListener('click', function () {
     console.log("hello")
     // modal.style.display = "block";
     displayItemPickup("Julio", "Hey..I knew Mike, the guy who used to live in this cell. He got out a few weeks ago and left this box. I can help you open it if you're willing to trade.", "images/Julio/", 16);
-
+    console.log(temp);
+    if(temp === "roll"){
+    removeItem();
+  }
   });
   cellMap.appendChild(windowArea);
   northScreen.appendChild(chestObj);
@@ -189,10 +196,101 @@ window.onload = function () {
       }, i * 200);
     }
   }
+
+  //Inventory Functions
+  var inventorySlot = -1;
   var inventoryButton = document.getElementById("inventory");
   inventoryButton.onclick = function () {
-    displayItemPickup("Cigar", "You picked up an item!", "images/cigarettes/", 16);
+    var hidInv = document.getElementById("hidden-inv");
+    if (hidInv.style.display === "grid") {
+      hidInv.style.display = "none";
+    }
+    else {
+      hidInv.style.display = "grid";
+    }
   }
+
+
+
+  function findItem(idTag) {
+    var i;
+    for (i = 0; i < testPlayer.inventory.bar.length; i++) {
+      if (testPlayer.inventory.bar[i] === idTag) {
+        inventorySlot = i;
+      }
+
+
+    }
+  }
+
+  var idThis;
+  function addItem(idTag) {
+    testPlayer.takeItem(idTag);
+    findItem(idTag);
+    console.log(testPlayer.inventory);
+    document.getElementById(inventorySlot).innerHTML = `<div class = 'fill'><img id = 'inv-${idTag}' src =  'images/${idTag}/3.png' height = '40' width = '45'></div>`;
+    document.getElementById("inv-" + idTag).onclick = function () { useItem(this.id) };
+    idTag = " ";
+    inventorySlot = -1;
+
+
+  }
+  var newClass;
+  var temp = " "
+  function useItem(idTag) {
+
+   
+    if (temp === " " && newClass === undefined) {
+      temp = idTag.split("-")[1];
+      console.log(temp);
+      console.log(newClass);
+      newClass = document.getElementById(idTag);
+      newClass.className = "selected";
+      idThis = idTag;
+
+    }
+    else if(temp === " " && newClass === document.getElementById(idTag)){
+      temp = idTag.split("-")[1];
+      console.log(temp);
+      console.log(newClass);
+      newClass = document.getElementById(idTag);
+      newClass.className = "selected";
+    }
+    else if(newClass != document.getElementById(idTag)){
+      temp = idTag.split("-")[1];
+      newClass.className = idThis;
+      newClass = document.getElementById(idTag);
+      newClass.className = "selected";
+      idThis = idTag;
+
+    }
+    else {
+      newClass = document.getElementById(idTag);
+      newClass.className = idTag;
+      temp = " ";
+    }
+
+  }
+
+
+
+  function removeItem() {
+
+    findItem(temp);
+    testPlayer.dropItem(inventorySlot);
+    console.log(testPlayer.inventory.bar);
+    if (inventorySlot != -1) {
+      document.getElementById(inventorySlot).innerHTML = "";
+      idTag = " ";
+      inventorySlot = -1;
+    }
+
+
+
+  }
+
+
+  //end of inventory functions
   var itemSpan = document.getElementById("item-span");
   itemSpan.onclick = function () {
     itemModal.style.display = "none";
@@ -264,7 +362,7 @@ window.onload = function () {
     }
   }
   // // Initiate zoom effect:
-   imageZoom("myimage", "myresult");
+  imageZoom("myimage", "myresult");
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
@@ -352,18 +450,18 @@ window.onload = function () {
     const { alert, warning, info } = COLOR_CODES;
     if (timeLeft <= alert.threshold) {
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(warning.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(warning.color);
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(alert.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.add(alert.color);
     } else if (timeLeft <= warning.threshold) {
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(info.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(info.color);
       document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(warning.color);
+        .getElementById("base-timer-path-remaining")
+        .classList.add(warning.color);
     }
   }
 
@@ -377,8 +475,8 @@ window.onload = function () {
       calculateTimeFraction() * FULL_DASH_ARRAY
     ).toFixed(0)} 283`;
     document
-    .getElementById("base-timer-path-remaining")
-    .setAttribute("stroke-dasharray", circleDasharray);
+      .getElementById("base-timer-path-remaining")
+      .setAttribute("stroke-dasharray", circleDasharray);
   }
 };
 
@@ -438,13 +536,13 @@ function safeCode() {
 //End of Safecode function
 
 // Function to open the pin lockObj
-function pinLockCode(){
+function pinLockCode() {
   var code = document.getElementById('thePinLock').value;
 
-  if(code == "1010") {
+  if (code == "1010") {
     window.alert("You got the right pin!")
   }
-  else{
+  else {
     var alarmSound = new sound("prisonAlarm2.m4a");
     alarmSound.play();
     window.alert("Wrong pin try again...")
