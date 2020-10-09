@@ -32,6 +32,18 @@ window.onload = function () {
   northScreen.appendChild(rollObj);
 
 
+  // cigarettes Object
+  var cigarettesObj = document.createElement('img');
+  cigarettesObj.setAttribute('id', 'cigarettes');
+  cigarettesObj.setAttribute('src', 'images/cigarettes/2.png');
+  cigarettesObj.addEventListener('click', function () {
+    idTag = "cigarettes";
+    addItem(idTag);
+    displayItemPickup("Cigarettes", "You found an item!", "images/cigarettes/", 16);
+  });
+  northScreen.appendChild(cigarettesObj);
+
+
   // Clock Object
   var clockObj = document.createElement('img');
   clockObj.setAttribute('id', 'clock');
@@ -239,7 +251,7 @@ window.onload = function () {
   var temp = " "
   function useItem(idTag) {
 
-   
+
     if (temp === " " && newClass === undefined) {
       temp = idTag.split("-")[1];
       console.log(temp);

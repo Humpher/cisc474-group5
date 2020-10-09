@@ -375,6 +375,15 @@ h1{
   height:6em
 }
 
+#cigarettes{
+  position: absolute;
+  bottom: 250;
+  right:480;
+  width:4em;
+  height:4em
+
+}
+
 
 
 
