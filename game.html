@@ -69,39 +69,44 @@
           <div class = "bar" id = "6"></div>
           <div class = "bar" id = "7"></div>
         </div>
-
+        
       </nav>
 
 
     </div>
   </div>
 
-  <div class="img-zoom-container">
-    <div id="myresult" class="img-zoom-result"></div>
-  </div>
-
-  <!--Adding the modal box for passcode input-->
-
-  <div id="theModal" class="modal">
+    <!-- Item Description Modal -->
+    <div id="item-modal" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
-<<<<<<< HEAD
         <span id = "item-span" class="close">&times;</span>
         <h1 id = "item-title">Cigarettes</h1>
         <p id="item-description"> You found an item!</p>
         <img id="item-img" src="images/cigarettes/0.png" height="50%">
-=======
-        <span id="theClose" class="close">&times;</span>
-        <label for="tchest">Enter the passcode to open the chest:</label>
-        <input type="text" id="thechest" name="tchest">
-        <input type="submit" id = "sub" onclick= "safeCode()">
->>>>>>> c531b8e28a828d58859142acac6e6e2c3e55a6ed
     </div>
 
 </div>
 
-<<<<<<< HEAD
+
+
+<!-- Item Description Modal for Pin lock -->
+<div id="item-modal-2" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+    <span id = "item-span-2" class="close">&times;</span>
+
+    <h1 id = "item-title-2">Pin Lock</h1>
+    <p id="item-description-2"> Looks like you need a 4 digit pin to unlock the door!</p>
+    <img id="item-img-2" src="images/PinLock/0.png" height="50%">
+      <input type="text" id="thePinLock" name="pinLock">
+      <input type="submit" id = "sub" onclick= "pinLockCode()">
+</div>
+
+</div>
+
 
 
 
@@ -121,13 +126,12 @@
   </div>
 
 
+
+
   <div class="img-zoom-container">
     <div id="myresult" class="img-zoom-result"></div>
   </div>
 
-=======
-<!-- End of modal box-->
->>>>>>> c531b8e28a828d58859142acac6e6e2c3e55a6ed
 
 
 </body>

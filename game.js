@@ -20,7 +20,6 @@ window.onload = function () {
     document.getElementById("theModal").style.display = "block";
   });
 
-  var idTag;
   // Money roll Object
   var rollObj = document.createElement('img');
   rollObj.setAttribute('id', 'roll');
@@ -29,20 +28,62 @@ window.onload = function () {
     idTag = "roll";
     addItem(idTag);
     displayItemPickup("Roll", "hello", "images/roll/", 16);
-    
-    });
-  eastScreen.appendChild(rollObj);
+  });
+  northScreen.appendChild(rollObj);
 
 
   // Clock Object
   var clockObj = document.createElement('img');
   clockObj.setAttribute('id', 'clock');
-  clockObj.setAttribute('src', 'images/clock/3.png');
+  clockObj.setAttribute('src', 'images/clock/14.png');
   clockObj.addEventListener('click', function () {
     displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
-    idTag = "clock";
   });
   northScreen.appendChild(clockObj);
+
+  // PinLock object
+  var lockObj = document.createElement('img');
+  lockObj.setAttribute('id', 'lock');
+  lockObj.setAttribute('src', 'images/pinLock/2.png');
+  document.getElementById('item-span-2').addEventListener('click', function () {
+    document.getElementById('item-modal-2').style.display = "none";
+
+  });
+
+  lockObj.addEventListener('click', function () {
+    document.getElementById('item-modal-2').style.display = "block";
+  });
+  eastScreen.appendChild(lockObj);
+
+  // piggyBankObj object
+  var piggyBankObj = document.createElement('img');
+  piggyBankObj.setAttribute('id', 'piggyBank');
+  piggyBankObj.setAttribute('src', 'images/piggyBank/0.png');
+  piggyBankObj.addEventListener('click', function () {
+    displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
+  });
+  eastScreen.appendChild(piggyBankObj);
+
+
+  // PadLock object
+  var padlockObj = document.createElement('img');
+  padlockObj.setAttribute('id', 'padLock');
+  padlockObj.setAttribute('src', 'images/padLock/0.png');
+  padlockObj.addEventListener('click', function () {
+    displayItemPickup("Pad Lock", "You need a key to unlock this pad lock", "images/padLock/", 16);
+  });
+  eastScreen.appendChild(padlockObj);
+
+  // Book object
+  var bookObj = document.createElement('img');
+  bookObj.setAttribute('id', 'book');
+  bookObj.setAttribute('src', 'images/book/0.png');
+  bookObj.addEventListener('click', function () {
+    displayItemPickup("Old Book", "You found an item!", "images/book/", 16);
+    idTag = "book";
+    addItem(idTag);
+  });
+  eastScreen.appendChild(bookObj);
 
 
   var cellMap = document.createElement('map');
@@ -56,8 +97,8 @@ window.onload = function () {
   windowArea.addEventListener('click', function () {
     console.log("hello")
     // modal.style.display = "block";
-    displayItemPickup("Julio", "hello", "images/Julio/", 16);
-
+    displayItemPickup("Julio", "Hey..I knew Mike, the guy who used to live in this cell. He got out a few weeks ago and left this box. I can help you open it if you're willing to trade.", "images/Julio/", 16);
+    removeItem();
   });
   cellMap.appendChild(windowArea);
   northScreen.appendChild(chestObj);
@@ -85,6 +126,7 @@ window.onload = function () {
     if (view == 'east' || view == 'west') {
       loadEast()
     }
+    document.getElementById("myresult").style.backgroundImage = "url('" + viewMap.get(testPlayer.view) + "')";
   }
 
   var testPlayer = new Player(1, Player.views.NORTH);
@@ -165,48 +207,103 @@ window.onload = function () {
     }
   }
 
+
+
   function findItem(idTag) {
     var i;
     for (i = 0; i < testPlayer.inventory.bar.length; i++) {
-        if (testPlayer.inventory.bar[i] === idTag) {
-            inventorySlot = i;
-        }
+      if (testPlayer.inventory.bar[i] === idTag) {
+        inventorySlot = i;
+      }
 
 
     }
-}
+  }
 
-function addItem(idTag) {
-  testPlayer.takeItem(idTag);
-  findItem(idTag);
-  alert(inventorySlot);
-  console.log(testPlayer.inventory);
-  document.getElementById(inventorySlot).innerHTML = `<div class = 'fill'><img id = 'inv-${idTag}' src =  'images/${idTag}/3.png' height = '40' width = '40' onclick = 'useItem(this.id)'></div>`;
-  idTag = " ";
-  inventorySlot = -1;
+  var idThis;
+  function addItem(idTag) {
+    testPlayer.takeItem(idTag);
+    findItem(idTag);
+    console.log(testPlayer.inventory);
+    document.getElementById(inventorySlot).innerHTML = `<div class = 'fill'><img id = 'inv-${idTag}' src =  'images/${idTag}/3.png' height = '40' width = '45'></div>`;
+    document.getElementById("inv-" + idTag).onclick = function () { useItem(this.id) };
+    idTag = " ";
+    inventorySlot = -1;
 
-}
 
-function removeItem() {
+  }
+  var newClass;
+  var temp = " "
+  function useItem(idTag) {
 
-  findItem(idTag);
-  testPlayer.removeItem(x);
-  if (x != -1) {
+   
+    if (temp === " " && newClass === undefined) {
+      temp = idTag.split("-")[1];
+      console.log(temp);
+      console.log(newClass);
+      newClass = document.getElementById(idTag);
+      newClass.className = "selected";
+      idThis = idTag;
+
+    }
+    else if(temp === " " && newClass === document.getElementById(idTag)){
+      temp = idTag.split("-")[1];
+      console.log(temp);
+      console.log(newClass);
+      newClass = document.getElementById(idTag);
+      newClass.className = "selected";
+    }
+    else if(newClass != document.getElementById(idTag)){
+      newClass.className = idThis;
+      newClass = document.getElementById(idTag);
+      newClass.className = "selected";
+      idThis = idTag;
+
+    }
+    else {
+      newClass = document.getElementById(idTag);
+      newClass.className = idTag;
+      temp = " ";
+    }
+
+
+
+
+    /* if (temp = "roll") {
+       if(idThis =)
+       newClass = document.getElementById("inv-"+idThis);
+       newClass.className = "inv-"+idThis;
+       idThis = " ";
+       
+     }
+     else {
+       idThis = idTag;
+       newClass = document.getElementById("inv-"+idThis);
+       newClass.className = "selected";
+     }
+     */
+
+  }
+
+
+
+  function removeItem() {
+
+    findItem(idThis);
+    testPlayer.dropItem(inventorySlot);
+    console.log(testPlayer.inventory.bar);
+    if (inventorySlot != -1) {
       document.getElementById(inventorySlot).innerHTML = "";
       idTag = " ";
       inventorySlot = -1;
+    }
+
+
+
   }
 
-}
 
-function useItem(idThis) { 
-  idTag = idThis
-  alert(this);
-  
-}
-//end of inventory functions
-
-
+  //end of inventory functions
   var itemSpan = document.getElementById("item-span");
   itemSpan.onclick = function () {
     itemModal.style.display = "none";
@@ -215,7 +312,11 @@ function useItem(idThis) {
     if (event.target == itemModal) {
       itemModal.style.display = "none";
     }
-  }
+    else if (event.target == document.getElementById('item-modal-2')) {
+      document.getElementById('item-modal-2').style.display = "none";
+
+    }
+  };
 
 
   function imageZoom(imgID, resultID) {
@@ -234,7 +335,7 @@ function useItem(idThis) {
     result.style.backgroundImage = "url('" + img.src + "')";
     result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
     /*execute a function when someone moves the cursor over the image, or the lens:*/
-    lens.addEventListener("mousemove", moveLens);
+    // lens.addEventListener("mousemove", moveLens);
     img.addEventListener("mousemove", moveLens);
     /*and also for touch screens:*/
     lens.addEventListener("touchmove", moveLens);
@@ -274,7 +375,7 @@ function useItem(idThis) {
     }
   }
   // // Initiate zoom effect:
-  // imageZoom("myimage", "myresult");
+  imageZoom("myimage", "myresult");
 
   // Timer functionality
   const FULL_DASH_ARRAY = 283;
@@ -425,7 +526,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function safeCode() {
   var decipher = document.getElementById("thechest").value;
 
-  if (decipher == "abcd") {
+  if (decipher == "xyunb") {
     window.alert("Chest opened");
   }
   else if (decipher === null || decipher === '') {
@@ -437,6 +538,22 @@ function safeCode() {
     window.alert("Wrong code!!!")
     //document.getElementById("chest").src == "tresurechest.png";
   }
-  /*displayItemPickup("Cigar", "You picked up an item!", "images/cigarettes/", 16);*/
+
 };
+
 //End of Safecode function
+
+// Function to open the pin lockObj
+function pinLockCode() {
+  var code = document.getElementById('thePinLock').value;
+
+  if (code == "1010") {
+    window.alert("You got the right pin!")
+  }
+  else {
+    var alarmSound = new sound("prisonAlarm2.m4a");
+    alarmSound.play();
+    window.alert("Wrong pin try again...")
+  }
+
+};
