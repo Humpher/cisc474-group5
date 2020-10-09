@@ -6,11 +6,14 @@ window.onload = function() {
 
     // had to put it in an event cause chrome does not like playing sounds on page load
     var alarmSound = new sound("buzz.ogg");
+    var musicSound = new sound("lose.mp3");
     alarmSound.play();
+    musicSound.play();
     document.body.onclick = function() {
         alarmSound.play();
+        musicSound.play();
     }
-}
+
 
 function sound(src) {
     this.sound = document.createElement("audio");
@@ -26,3 +29,4 @@ function sound(src) {
       this.sound.pause();
     }
   }
+};
