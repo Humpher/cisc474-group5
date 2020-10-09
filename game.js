@@ -98,7 +98,10 @@ window.onload = function () {
     console.log("hello")
     // modal.style.display = "block";
     displayItemPickup("Julio", "Hey..I knew Mike, the guy who used to live in this cell. He got out a few weeks ago and left this box. I can help you open it if you're willing to trade.", "images/Julio/", 16);
+    console.log(temp);
+    if(temp === "roll"){
     removeItem();
+  }
   });
   cellMap.appendChild(windowArea);
   northScreen.appendChild(chestObj);
@@ -254,6 +257,7 @@ window.onload = function () {
       newClass.className = "selected";
     }
     else if(newClass != document.getElementById(idTag)){
+      temp = idTag.split("-")[1];
       newClass.className = idThis;
       newClass = document.getElementById(idTag);
       newClass.className = "selected";
@@ -266,30 +270,13 @@ window.onload = function () {
       temp = " ";
     }
 
-
-
-
-    /* if (temp = "roll") {
-       if(idThis =)
-       newClass = document.getElementById("inv-"+idThis);
-       newClass.className = "inv-"+idThis;
-       idThis = " ";
-       
-     }
-     else {
-       idThis = idTag;
-       newClass = document.getElementById("inv-"+idThis);
-       newClass.className = "selected";
-     }
-     */
-
   }
 
 
 
   function removeItem() {
 
-    findItem(idThis);
+    findItem(temp);
     testPlayer.dropItem(inventorySlot);
     console.log(testPlayer.inventory.bar);
     if (inventorySlot != -1) {
