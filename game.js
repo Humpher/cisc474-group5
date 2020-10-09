@@ -500,7 +500,7 @@ var julio_unlocked_2 = false;
 
   function onTimesUp() {
     clearInterval(timerInterval);
-    window.location.href = "game.html";
+    window.location.href = "lose.html";
   }
 
   function startTimer() {
