@@ -11,7 +11,11 @@
                 if(i >= 8) {
                     alert("Inventory full!");
                 } else {
-                    this.bar[i] = item
+                    var exists = false;
+                    for(var j=0; j < this.bar.length; j++) {
+                        if(this.bar[j] == item) exists = true;
+                    }
+                    if(!exists) this.bar[i] = item;
                 }
             }
             this.removeItem = function (index) {

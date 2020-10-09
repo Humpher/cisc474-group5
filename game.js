@@ -5,7 +5,12 @@ let viewMap = new Map([
   ["west", "01E_prisonCell(up).png"]
 ]);
 
-window.onload = function () {
+var pin_unlocked = false;
+var pad_unlocked = false;
+var julio_unlocked = false;
+var julio_unlocked_2 = false;
+
+//window.onload = function () {
 
   var parentElement = document.getElementById('game_objects');
 
@@ -18,7 +23,24 @@ window.onload = function () {
   chestObj.setAttribute('height', 1100);
   chestObj.addEventListener('click', function () {
     document.getElementById("theModal").style.display = "block";
+    //if(temp === "roll") {
+      //document.getElementById("thechest").setAttribute("value","100");
+   // }
   });
+
+  //Hammer Object
+  var hammerObj = document.createElement('img');
+  hammerObj.setAttribute('id', 'hammer');
+  hammerObj.setAttribute('src', 'images/hammer/3.png');
+  /*hammerObj.addEventListener('click', function () {
+    idTag = "hammer";
+    addItem(idTag);
+  });*/
+
+  //Key Object
+  var keyObj = document.createElement('img');
+  keyObj.setAttribute('id', 'key');
+  keyObj.setAttribute('src', 'images/key/3.png');
 
   // Money roll Object
   var rollObj = document.createElement('img');
@@ -28,6 +50,7 @@ window.onload = function () {
     idTag = "roll";
     addItem(idTag);
     displayItemPickup("Roll", "hello", "images/roll/", 16);
+    northScreen.removeChild(rollObj);
   });
   northScreen.appendChild(rollObj);
 
@@ -40,6 +63,7 @@ window.onload = function () {
     idTag = "cigarettes";
     addItem(idTag);
     displayItemPickup("Cigarettes", "You found an item!", "images/cigarettes/", 16);
+    northScreen.removeChild(cigarettesObj);
   });
   northScreen.appendChild(cigarettesObj);
 
@@ -50,6 +74,9 @@ window.onload = function () {
   clockObj.setAttribute('src', 'images/clock/14.png');
   clockObj.addEventListener('click', function () {
     displayItemPickup("Vintage Clock", "hello", "images/clock/", 16);
+    if(temp != " ") {
+      displayItemPickup("Vintage Clock", "Nothing interesting happens.", "images/clock/", 16);
+    }
   });
   northScreen.appendChild(clockObj);
 
@@ -72,7 +99,18 @@ window.onload = function () {
   piggyBankObj.setAttribute('id', 'piggyBank');
   piggyBankObj.setAttribute('src', 'images/piggyBank/0.png');
   piggyBankObj.addEventListener('click', function () {
-    displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
+    if(temp === "hammer") {
+      displayItemPickup("Broken Piggy Bank", "You found the key! Use this for your next clue", "images/brokenPiggyBank/", 1);
+      removeItem();
+      idTag = "key";
+      addItem(idTag);
+      eastScreen.removeChild(piggyBankObj);
+    } else if(temp != " ") { 
+      displayItemPickup("Piggy Bank", "Nothing interesting happens.", "images/piggyBank/", 16); 
+    } else {
+      displayItemPickup("Piggy Bank", "Seems like there's something inside", "images/piggyBank/", 16);
+    }
+
   });
   eastScreen.appendChild(piggyBankObj);
 
@@ -82,7 +120,19 @@ window.onload = function () {
   padlockObj.setAttribute('id', 'padLock');
   padlockObj.setAttribute('src', 'images/padLock/0.png');
   padlockObj.addEventListener('click', function () {
-    displayItemPickup("Pad Lock", "You need a key to unlock this pad lock", "images/padLock/", 16);
+    if(temp === "key") {
+      window.alert("You unlocked the padlock!")
+      removeItem();
+      eastScreen.removeChild(padlockObj);
+      pad_unlocked = true;
+      if(pin_unlocked) {
+        window.location.href = "win.html";
+      }
+    } else if(temp != " ") {
+      displayItemPickup("Pad Lock", "Nothing interesting happens.", "images/padLock/", 16);
+    } else {
+      displayItemPickup("Pad Lock", "You need a key to unlock this pad lock", "images/padLock/", 16);
+    }
   });
   eastScreen.appendChild(padlockObj);
 
@@ -94,6 +144,7 @@ window.onload = function () {
     displayItemPickup("Old Book", "You found an item!", "images/book/", 16);
     idTag = "book";
     addItem(idTag);
+    eastScreen.removeChild(bookObj);
   });
   eastScreen.appendChild(bookObj);
 
@@ -107,13 +158,32 @@ window.onload = function () {
   windowArea.setAttribute('coords', "550,130,490,240");
   // When the user clicks the window, open the modal
   windowArea.addEventListener('click', function () {
-    console.log("hello")
     // modal.style.display = "block";
     displayItemPickup("Julio", "Hey..I knew Mike, the guy who used to live in this cell. He got out a few weeks ago and left this box. I can help you open it if you're willing to trade.", "images/Julio/", 16);
-    console.log(temp);
+    if(julio_unlocked_2) {
+      displayItemPickup("Julio", "You're on your own from here. Sorry.", "images/Julio/", 16);
+      } else if(julio_unlocked) {
+    displayItemPickup("Julio", "Hurry up, kid... you ain't getting any younger. 20 shifts is all you need.", "images/Julio/", 16);
+    }
     if(temp === "roll"){
+    displayItemPickup("Julio", "Oh thanks, buddy. Too bad for you, this doesn't do me any good. I already swiped more than I need off these dumb prison guards", "images/Julio/", 16);
     removeItem();
-  }
+    }
+    if(temp === "cigarettes") {
+    displayItemPickup("Julio", "Now we're talking. If you wanna bust outta here, you gotta use the 20 shifter. Good luck.", "images/Julio/", 16);
+    removeItem();
+    julio_unlocked = true;
+    }
+    if(temp === "book") {
+      displayItemPickup("Julio", "Nice book, nerd. Reading ain't really my fix.", "images/Julio/", 16);
+      removeItem();
+    }
+    if(temp === "hammer") {
+      displayItemPickup("Julio", "Go ahead and knock it against your head. Might do you some good.", "images/Julio/", 16);
+    }
+    if(temp === "key") {
+      displayItemPickup("Julio", "That's a nice key there. I bet the guards would appreciate your returning it...", "images/Julio/", 16);
+    }
   });
   cellMap.appendChild(windowArea);
   northScreen.appendChild(chestObj);
@@ -296,6 +366,7 @@ window.onload = function () {
       idTag = " ";
       inventorySlot = -1;
     }
+    temp = " ";
 
 
 
@@ -490,7 +561,7 @@ window.onload = function () {
       .getElementById("base-timer-path-remaining")
       .setAttribute("stroke-dasharray", circleDasharray);
   }
-};
+//};
 
 //Adding alarm sound function
 function sound(src) {
@@ -527,14 +598,17 @@ function safeCode() {
 
   if (decipher == "xyunb") {
     // window.alert("Chest opened");
-    document.getElementById("theModal").style.display = "none"; 
-    document.getElementById("openchest-modal").style.display = "block"; 
-    document.getElementById("theCloser").addEventListener('click', function () { 
+    document.getElementById("theModal").style.display = "none";
+    document.getElementById("openchest-modal").style.display = "block";
+    document.getElementById("theCloser").addEventListener('click', function () {
       document.getElementById("openchest-modal").style.display = "none"; });
+      idTag = "hammer";
+      addItem(idTag);
+      julio_unlocked_2 = true;
   }
   else if (decipher === null || decipher === '') {
     document.getElementById("chest").src == "tresurechest.png";
-    document.getElementById("theModal").style.display = "none"; 
+    document.getElementById("theModal").style.display = "none";
   }
   else {
     var alarmSound = new sound("prisonAlarm2.m4a");
@@ -553,6 +627,11 @@ function pinLockCode() {
 
   if (code == "1010") {
     window.alert("You got the right pin!")
+    eastScreen.removeChild(lockObj);
+    pin_unlocked = true;
+    if(pad_unlocked) {
+      window.location.href = "win.html";
+    }
   }
   else {
     var alarmSound = new sound("prisonAlarm2.m4a");
